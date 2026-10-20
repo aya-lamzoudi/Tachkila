@@ -1,0 +1,28 @@
+section {
+    width: 100%;
+
+}
+
+.terrain {
+    display: grid;
+    gap: 5px;
+    width: 70%;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: repeat(9, 40px);
+    background-color:#070d1f;
+    margin: 10px auto;
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid #1E293B;
+
+}
+
+.terrain div {
+    background-color: #121b2d;
+    border-radius: 10px;
+}
+.GB{
+    border: 2px solid orange;
+    grid-column:1/3 ;
+    grid-row:4/7 ;
+}
