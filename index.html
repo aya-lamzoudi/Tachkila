@@ -24,15 +24,23 @@
             </div>
             <div class="position">
                 <ul class="flex gap-2 ">
-                    <li class="text-xs text-orange-400">GB</li>
-                    <li class="text-xs text-blue-600">DEF</li>
-                    <li class="text-xs text-green-700">MIL</li>
-                    <li class="text-xs text-red-600">ATT</li>
+                    <li class="text-xs text-orange-400 flex gap-1">
+                        <div class="w-2 h-2 bg-orange-400 rounded-full self-center"></div>GB
+                    </li>
+                    <li class="text-xs text-blue-600 flex gap-1">
+                        <div class="w-2 h-2 bg-blue-600 rounded-full self-center"></div>DEF
+                    </li>
+                    <li class="text-xs text-green-700 flex gap-1">
+                        <div class="w-2 h-2 bg-green-700 rounded-full self-center"></div>MIL
+                    </li>
+                    <li class="text-xs text-red-600 flex gap-1">
+                        <div class="w-2 h-2 bg-red-600 rounded-full self-center"></div>ATT
+                    </li>
                 </ul>
             </div>
             <div class="schema flex gap-3">
                 <p class="text-ms text-mist-400 ">schéma</p>
-                <div class="px-1 border rounded-[10px] border-mist-700 bg-[#1E293B] text-gray-50">4-3-2</div>
+                <div class="px-1 border rounded-[10px] border-mist-700 bg-[#1E293B] text-gray-50">4-4-2</div>
             </div>
         </div>
 
@@ -45,7 +53,7 @@
             <aside class="sidebar ">
                 <div class="sidecontainer bg-[#1E293B] w-[300px] h-full px-2 border-r border-solid border-gray-500">
                     <button
-                        class="add-btn bg-green-600 text-gray-50 w-[280px] h-1/15 rounded-[10px] mt-[6px] mb-[10px] font-bold ">+
+                        class="add-btn bg-[#1eba5f] text-gray-50 w-[280px] h-1/15 rounded-[10px] mt-[6px] mb-[10px] font-bold ">+
                         Ajouter un
                         joueur</button>
                     <div class=" flex justify-between text-white text-xs">
@@ -109,7 +117,7 @@
                         </div>
                     </div>
                     <div class="DG">
-                        <p > <span>DG</span><br>libre</p>
+                        <p> <span>DG</span><br>libre</p>
                     </div>
                     <div class="DC-1">
                         <p> <span>DC</span><br>libre</p>
@@ -118,9 +126,9 @@
                         <p> <span>DC</span><br>libre</p>
                     </div>
                     <div class="DD ">
-                            <p> <span>DD</span><br>libre</p>
+                        <p> <span>DD</span><br>libre</p>
                     </div>
-                    <div class="MG"> 
+                    <div class="MG">
                         <p> <span>MG</span><br>libre</p>
                     </div>
                     <div class="MC-1">
@@ -238,8 +246,51 @@
                     <div></div>
 
                 </div>
-                <p></p>
+                <p class="info"> Gardien à gauche - attague à droite. Choisissez la position de chaque joueur dans la
+                    liste. Joueurs placés</p>
             </section>
+            <div class="popup ">
+                <div class="headerpopup ">
+                    <h2>Ajouter un joueur</h2>
+                    <button><i class="fa-solid fa-x text-white"></i></button>
+                </div>
+                <div class="nom">
+                    <label for="name" required> Nom complet</label>
+                    <input type="text" name="name" id="name" placeholder=" EX: Aya Lamzoudi ">
+                </div>
+                <div class="poste">
+                    <span class="pt-[10px] ">Post</span>
+                    <label class="position">
+                        <input type="radio" name="poste" value="gardien">
+                        <span> Gardien</span>
+                    </label>
+
+                    <label class="position">
+                        <input type="radio" name="poste" value="defenseur">
+                        <span> Défenseur</span>
+                    </label>
+
+                    <label class="position">
+                        <input type="radio" name="poste" value="milieu">
+                        <span>Milieu</span>
+                    </label>
+
+                    <label class="position">
+                        <input type="radio" name="poste" value="attaquant">
+                        <span>Attaquant</span>
+                    </label>
+                </div>
+                <div class="tenue-number">
+                    <label for="name"> Numerro (1 a 99)</label>
+                    <input type="number" name="number" id="nbr" placeholder=" EX: 10" required>
+                </div>
+                <div class="btn">
+                    <button class="annuler">Annuler</button>
+                    <button class="ajouter" >Ajouter</button>
+                </div>
+
+            </div>
+
         </div>
 
 
