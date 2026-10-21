@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="style.css">
+    <title>Tachkila</title>
+</head>
+
+<body class="mt-2 ml-4 mr-4 w-screen">
+
+    <!-- start header -->
+    <header>
+        <div
+            class="headercontainer flex justify-between items-center px-5 h-[50px] bg-[#1E293B] border-b border-solid border-gray-500">
+            <div class=" logo flex gap-2">
+                <img src="img/logo.jpg" alt="logo" class="w-[30px] h-[30px] rounded-4xl">
+                <p class="text-gray-50 font-bold ">TACHKILA</p>
+            </div>
+            <div class="position">
+                <ul class="flex gap-2 ">
+                    <li class="text-xs text-orange-400 flex gap-1">
+                        <div class="w-2 h-2 bg-orange-400 rounded-full self-center"></div>GB
+                    </li>
+                    <li class="text-xs text-blue-600 flex gap-1">
+                        <div class="w-2 h-2 bg-blue-600 rounded-full self-center"></div>DEF
+                    </li>
+                    <li class="text-xs text-[#20d244] flex gap-1">
+                        <div class="w-2 h-2 bg-[#20d244] rounded-full self-center"></div>MIL
+                    </li>
+                    <li class="text-xs text-red-600 flex gap-1">
+                        <div class="w-2 h-2 bg-red-600 rounded-full self-center"></div>ATT
+                    </li>
+                </ul>
+            </div>
+            <div class="schema flex gap-3">
+                <p class="text-ms text-mist-400 ">schéma</p>
+                <div class="px-1 border rounded-[10px] border-mist-700 bg-[#1E293B] text-gray-50">4-4-2</div>
+            </div>
+        </div>
+
+    </header>
+    <!-- end header -->
+    <!-- start main section -->
+    <main>
+        <div class="maincontainer  flex bg-[#0F172A]">
+            <!-- start aside section -->
+            <aside class="sidebar ">
+                <div class="sidecontainer bg-[#1E293B] w-[300px] h-full px-2 border-r border-solid border-gray-500">
+                    <button
+                        class="add-btn bg-[#1eba5f] text-gray-50 w-[280px] h-1/15 rounded-[10px] mt-[6px] mb-[10px] font-bold ">+
+                        Ajouter un
+                        joueur</button>
+                    <div class=" flex justify-between text-white text-xs">
+                        <h3 class="font-bold">Effectif</h3>
+                        <span class="p-[3px] border border-taupe-500 rounded-[10px] bg-[#0F172A]"> 1 joueur(s)</span>
+                    </div>
+                    <p class="text-xs text-mist-400 pt-[10px] pl-[2px] pb-[3px]">
+                        Cliquez sur un joueur placé pour voir sa case sur le
+                        terrain. 🖊️ pour modifier, 🗑 pour supprimer.
+                    </p>
+                    <div id="playerlist ">
+                        <div
+                            class="player-card px-1 text-gray-50  h-[100px] mt-[10px] mb-[10px] border rounded-[10px] border-l-[4px] border-solid border-orange-400">
+                            <div class="player-info flex justify-between p-[6px]">
+                                <div class="player flex gap-4">
+                                    <div
+                                        class="player-number self-center w-[30px] h-[30px] rounded-[30px] border border-solid border-orange-400 text-center ">
+                                        1</div>
+                                    <div class="player-details">
+                                        <div class="player-name font-bold text-white">bono</div>
+                                        <div class="player-position text-orange-400">Gardien</div>
+                                    </div>
+                                </div>
+
+                                <div class="actions">
+                                    <button class="edit-btn pr-[4px]"><i class="fa-solid fa-pen"></i></button>
+                                    <button class="delete-btn pr-[2px]"><i class="fa-solid fa-trash-can"></i></button>
+                                </div>
+                            </div>
+                            <select
+                                class="select-position w-[96%] m-auto border rounded-[10px] border-mist-700 bg-[#1E293B]"
+                                id="select">
+                                <option value="bench selected ">Sur le banc</option>
+                                <option value="GB ">GB - Gardien</option>
+                                <option value="DG">DG - Défenseur gauche</option>
+                                <option value="DC1">DC - Défenseur central 1</option>
+                                <option value="DC2">DC - Défenseur central 2</option>
+                                <option value="DD">DD - Défenseur droit</option>
+                                <option value="MG">MG - Milieu gauche</option>
+                                <option value="MC1">MC - Milieu central 1</option>
+                                <option value="MC2">MC - Milieu central 2</option>
+                                <option value="MD">MD - Milieu droit</option>
+                                <option value="BU1">BU - Buteur 1</option>
+                                <option value="BU2">BU - Buteur 2</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+
+            </aside>
+            <!-- end aside section -->
+            <section class="">
+                <div class="terrain w-screen ">
+                    <div class="GB flex gap-1 justify-center">
+                        <div class="number">
+                            1</div>
+                        <div class="player-details">
+                            <div class="position text-orange-400 ">GB</div>
+                            <div class="name font-bold text-white">BONO</div>
+                        </div>
+                    </div>
+                    <div class="DG">
+                        <p> <span>DG</span><br>libre</p>
+                    </div>
+                    <div class="DC-1">
+                        <p> <span>DC</span><br>libre</p>
+                    </div>
+                    <div class="DC-2">
+                        <p> <span>DC</span><br>libre</p>
+                    </div>
+                    <div class="DD ">
+                        <p> <span>DD</span><br>libre</p>
+                    </div>
+                    <div class="MG">
+                        <p> <span>MG</span><br>libre</p>
+                    </div>
+                    <div class="MC-1">
+                        <p> <span>MC</span><br>libre</p>
+                    </div>
+                    <div class="MC-2">
+                        <p> <span>MC</span><br>libre</p>
+                    </div>
+                    <div class="MD">
+                        <p> <span>MD</span><br>libre</p>
+                    </div>
+                    <div class="BU-1">
+                        <p> <span>BU</span><br>libre</p>
+                    </div>
+                    <div class="BU-2">
+                        <p> <span>BU</span><br>libre</p>
+                    </div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                
+
+                </div>
+                <p class="info"> Gardien à gauche - attague à droite. Choisissez la position de chaque joueur dans la
+                    liste. Joueurs placés</p>
+            </section>
+            <div class="popup ">
+                <div class="headerpopup ">
+                    <h2>Ajouter un joueur</h2>
+                    <button><i class="fa-solid fa-x text-white"></i></button>
+                </div>
+                <div class="nom">
+                    <label for="name" required> Nom complet</label>
+                    <input type="text" name="name" id="name" placeholder=" EX: Aya Lamzoudi ">
+                </div>
+                <div class="poste">
+                    <span class="pt-[10px] ">Post</span>
+                    <label class="position">
+                        <input type="radio" name="poste" value="gardien">
+                        <span> Gardien</span>
+                    </label>
+
+                    <label class="position">
+                        <input type="radio" name="poste" value="defenseur">
+                        <span> Défenseur</span>
+                    </label>
+
+                    <label class="position">
+                        <input type="radio" name="poste" value="milieu">
+                        <span>Milieu</span>
+                    </label>
+
+                    <label class="position">
+                        <input type="radio" name="poste" value="attaquant">
+                        <span>Attaquant</span>
+                    </label>
+                </div>
+                <div class="tenue-number">
+                    <label for="name"> Numerro (1 a 99)</label>
+                    <input type="number" name="number" id="nbr" placeholder=" EX: 10" required>
+                </div>
+                <div class="btn">
+                    <button class="annuler">Annuler</button>
+                    <button class="ajouter">Ajouter</button>
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+    </main>
+
+    <!-- end main section -->
+
+
+</body>
+<script src="script.js"> </script>
+</html>
