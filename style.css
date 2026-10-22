@@ -185,9 +185,15 @@ section .info {
 }
 
 /* ###################################################### */
+.popupcantainer {
+    display: none;  
+   
+}
 .popup {
-    display: none;
-    position: absolute;
+ margin: 0 auto;
+}
+
+/* .popup {
     color: white;
     padding: 10px 15px;
     border-radius: 10px;
@@ -198,34 +204,22 @@ section .info {
     height: 400px;
     z-index: 2;
 
-}
-
-/* to unhide the pup up */
-.unhide {
-    display: block;
-    position: absolute;
-    color: white;
-    padding: 10px 15px;
-    border-radius: 10px;
-    border: 1px solid rgb(137, 136, 134);
-    background-color: #19253e;
-    left: 35%;
-    top: 15%;
-    height: 400px;
-    z-index: 2;
-}
+} */
 
 .popup h2 {
     font-weight: bold;
 }
 
 .headerpopup {
+    width: 100%;
     display: flex;
     justify-content: space-between;
-    padding: 10px 0;
+    gap: 30px;
+   
 }
 
 .nom {
+    width: 100%;
     display: flex;
     flex-direction: column;
     font-size: 13px;
@@ -237,6 +231,7 @@ section .info {
     padding: 4px;
     border: 1px solid blue;
     border-radius: 10px;
+    width: 100%;
 }
 
 .poste {

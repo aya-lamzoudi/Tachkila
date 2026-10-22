@@ -12,7 +12,7 @@
     <title>Tachkila</title>
 </head>
 
-<body class="mt-2 ml-4 mr-4 w-screen">
+<body class="">
 
     <!-- start header -->
     <header>
@@ -107,7 +107,7 @@
             </aside>
             <!-- end aside section -->
             <section class="">
-                <div class="terrain w-screen ">
+                <div class="terrain ">
                     <div class="GB flex gap-1 justify-center">
                         <div class="number">
                             1</div>
@@ -228,54 +228,64 @@
                     <div></div>
                     <div></div>
                     <div></div>
-                
+
 
                 </div>
                 <p class="info"> Gardien à gauche - attague à droite. Choisissez la position de chaque joueur dans la
                     liste. Joueurs placés</p>
             </section>
-            <div class="popup ">
-                <div class="headerpopup ">
-                    <h2>Ajouter un joueur</h2>
-                    <button><i class="fa-solid fa-x text-white"></i></button>
-                </div>
-                <div class="nom">
-                    <label for="name" required> Nom complet</label>
-                    <input type="text" name="name" id="name" placeholder=" EX: Aya Lamzoudi ">
-                </div>
-                <div class="poste">
-                    <span class="pt-[10px] ">Post</span>
-                    <label class="position">
-                        <input type="radio" name="poste" value="gardien">
-                        <span> Gardien</span>
-                    </label>
+            <section id="hide"
+                class="popupcantainer flex justify-center items-center backdrop-blur-sm w-full h-full absolute top-0 text-white">
+                <div
+                    class="popup flex flex-col items-center justify-between p-5 bg-[#19253e] border-1 border-[rgb(137, 136, 134)  ] rounded-lg  w-[30%] h-[80%]">
+                    <div class="headerpopup ">
+                        <h2>Ajouter un joueur</h2>
+                        <button id="popnone"><i class="fa-solid fa-x text-white"></i></button>
+                    </div>
+                    <form id="addplayer" novalidate>
+                        <div class="nom">
+                            <label for="name"> Nom complet</label>
+                            <input type="text" name="name" id="name" placeholder=" EX: Aya Lamzoudi ">
+                            <p id="name-err" class="message text-red-600 text-center"></p>
+                        </div>
+                        <div class="poste" id="playerposte">
+                            <span class="pt-[10px] ">Post</span>
+                            <label class="position">
+                                <input type="radio" name="poste" value="gardien">
+                                <span> Gardien</span>
+                            </label>
 
-                    <label class="position">
-                        <input type="radio" name="poste" value="defenseur">
-                        <span> Défenseur</span>
-                    </label>
+                            <label class="position">
+                                <input type="radio" name="poste" value="defenseur">
+                                <span> Défenseur</span>
+                            </label>
 
-                    <label class="position">
-                        <input type="radio" name="poste" value="milieu">
-                        <span>Milieu</span>
-                    </label>
+                            <label class="position">
+                                <input type="radio" name="poste" value="milieu">
+                                <span>Milieu</span>
+                            </label>
 
-                    <label class="position">
-                        <input type="radio" name="poste" value="attaquant">
-                        <span>Attaquant</span>
-                    </label>
+                            <label class="position">
+                                <input type="radio" name="poste" value="attaquant">
+                                <span>Attaquant</span>
+                            </label>
+                        </div>
+                        <div class="tenue-number">
+
+                            <label for="name"> Numerro (1 a 99)</label>
+                            <input type="number" name="number" id="nbr" placeholder=" EX: 10" required>
+                            <p id="nbr-err" class="message text-red-600 text-center"></p>
+                        </div>
+
+                        <div class="btn">
+                            <button class="annuler">Annuler</button>
+                            <button class="ajouter" id="ajoute-btn" type="submit">Ajouter</button>
+                        </div>
+                    </form>
+
+
                 </div>
-                <div class="tenue-number">
-                    <label for="name"> Numerro (1 a 99)</label>
-                    <input type="number" name="number" id="nbr" placeholder=" EX: 10" required>
-                </div>
-                <div class="btn">
-                    <button class="annuler">Annuler</button>
-                    <button class="ajouter">Ajouter</button>
-                </div>
-
-            </div>
-
+            </section>
         </div>
 
 
@@ -287,4 +297,5 @@
 
 </body>
 <script src="script.js"> </script>
+
 </html>
