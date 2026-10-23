@@ -185,10 +185,10 @@ section .info {
 }
 
 /* ###################################################### */
-.popupcantainer {
+/* .popupcantainer {
     display: none;  
    
-}
+} */
 .popup {
  margin: 0 auto;
 }

@@ -79,8 +79,8 @@
                                 </div>
 
                                 <div class="actions">
-                                    <button class="edit-btn pr-[4px]"><i class="fa-solid fa-pen"></i></button>
-                                    <button class="delete-btn pr-[2px]"><i class="fa-solid fa-trash-can"></i></button>
+                                    <button class="edit-btn pr-[4px]" id="modpopup"><i class="fa-solid fa-pen"></i></button>
+                                    <button class="delete-btn pr-[2px]" id="supp"><i class="fa-solid fa-trash-can"></i></button>
                                 </div>
                             </div>
                             <select
@@ -242,7 +242,7 @@
 
             <!-- pop up -->
             <section id="hide"
-                class="popupcantainer flex justify-center items-center backdrop-blur-sm w-full h-full absolute top-0 text-white">
+                class="popupcantainer flex justify-center items-center backdrop-blur-sm w-full h-full absolute top-0 text-white hidden">
                 <div
                     class="popup flex flex-col items-center justify-between p-5 bg-[#19253e] border-1 border-[rgb(137, 136, 134)  ] rounded-lg  w-[30%] h-[80%]">
                     <div class="headerpopup ">
@@ -292,6 +292,68 @@
                         <div class="btn">
                             <button class="annuler" type="reset">Annuler</button>
                             <button class="ajouter" id="ajoute-btn" type="submit">Ajouter</button>
+                        </div>
+                        <p id="form-err" class="message text-green-600 text-center"></p>
+                    </form>
+
+
+                </div>
+            </section>
+
+            <!-- modifier pop up  -->
+
+
+            <section id="update"
+                class="updatepopupcaitainer flex justify-center items-center backdrop-blur-sm w-full h-full absolute top-0 text-white hidden">
+                <div
+                    class="updatepopup flex flex-col items-center justify-between p-5 bg-[#19253e] border-1 border-[rgb(137, 136, 134)  ] rounded-lg  w-[30%] h-[80%]">
+                    <div class="headerpopup ">
+                        <h2>Modifier le joueur</h2>
+                        <button id="updatenon"><i class="fa-solid fa-x text-white"></i></button>
+                    </div>
+                    <form id="addplayer" class="width-[100%]" novalidate>
+                        <div class="nom">
+                            <label for="name"> Nom complet</label>
+                            <input type="text" name="name" id="name" placeholder=" EX: Aya Lamzoudi ">
+                            <p id="name-err" class="message text-red-600 text-center"></p>
+                        </div>
+                        <div class="postes" id="poste">
+                            <label class="title"> poste</label>
+                            <label class="poste gardien">
+                                <input type="radio" name="poste" value="Gardien" required>
+                                <span class="dot"></span>
+                                Gardien
+                            </label>
+
+                            <label class="poste defenseur">
+                                <input type="radio" name="poste" value="Defenseur">
+                                <span class="dot"></span>
+                                Défenseur
+                            </label>
+
+                            <label class="poste milieu">
+                                <input type="radio" name="poste" value="Milieu">
+                                <span class="dot"></span>
+                                Milieu
+                            </label>
+
+                            <label class="poste attaquant">
+                                <input type="radio" name="poste" value="Attaquant">
+                                <span class="dot"></span>
+                                Attaquant
+                            </label>
+                        </div>
+                        <p id="flied-err" class="message text-red-600 text-center"></p>
+                        <div class="tenue-number">
+
+                            <label for="name"> Numerro (1 a 99)</label>
+                            <input type="number" name="number" id="nbr" placeholder=" EX: 10" required>
+                            <p id="nbr-err" class="message text-red-600 text-center"></p>
+                        </div>
+
+                        <div class="btn">
+                            <button class="annuler" id="updateannuler" type="reset">Annuler</button>
+                            <button class="ajouter" id="ajoute-btn" type="submit">enregistrer</button>
                         </div>
                         <p id="form-err" class="message text-green-600 text-center"></p>
                     </form>
