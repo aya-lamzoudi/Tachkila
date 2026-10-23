@@ -64,7 +64,7 @@
                         Cliquez sur un joueur placé pour voir sa case sur le
                         terrain. 🖊️ pour modifier, 🗑 pour supprimer.
                     </p>
-                    <div id="playerlist ">
+                    <div id="playerlist">
                         <div
                             class="player-card px-1 text-gray-50  h-[100px] mt-[10px] mb-[10px] border rounded-[10px] border-l-[4px] border-solid border-orange-400">
                             <div class="player-info flex justify-between p-[6px]">
@@ -73,7 +73,7 @@
                                         class="player-number self-center w-[30px] h-[30px] rounded-[30px] border border-solid border-orange-400 text-center ">
                                         1</div>
                                     <div class="player-details">
-                                        <div class="player-name font-bold text-white">bono</div>
+                                        <div id="playername"class="player-name font-bold text-white">bono</div>
                                         <div class="player-position text-orange-400">Gardien</div>
                                     </div>
                                 </div>
@@ -242,34 +242,39 @@
                         <h2>Ajouter un joueur</h2>
                         <button id="popnone"><i class="fa-solid fa-x text-white"></i></button>
                     </div>
-                    <form id="addplayer" novalidate>
+                    <form id="addplayer" class="width-[100%]" novalidate>
                         <div class="nom">
                             <label for="name"> Nom complet</label>
                             <input type="text" name="name" id="name" placeholder=" EX: Aya Lamzoudi ">
                             <p id="name-err" class="message text-red-600 text-center"></p>
                         </div>
-                        <div class="poste" id="playerposte">
-                            <span class="pt-[10px] ">Post</span>
-                            <label class="position">
-                                <input type="radio" name="poste" value="gardien">
-                                <span> Gardien</span>
+                        <div class="postes" id="poste">
+                            <label class="title"> poste</label>
+                            <label class="poste gardien">
+                                <input type="radio" name="poste" value="Gardien" required>
+                                <span class="dot"></span>
+                                Gardien
                             </label>
 
-                            <label class="position">
-                                <input type="radio" name="poste" value="defenseur">
-                                <span> Défenseur</span>
+                            <label class="poste defenseur">
+                                <input type="radio" name="poste" value="Defenseur">
+                                <span class="dot"></span>
+                                Défenseur
                             </label>
 
-                            <label class="position">
-                                <input type="radio" name="poste" value="milieu">
-                                <span>Milieu</span>
+                            <label class="poste milieu">
+                                <input type="radio" name="poste" value="Milieu">
+                                <span class="dot"></span>
+                                Milieu
                             </label>
 
-                            <label class="position">
-                                <input type="radio" name="poste" value="attaquant">
-                                <span>Attaquant</span>
+                            <label class="poste attaquant">
+                                <input type="radio" name="poste" value="Attaquant">
+                                <span class="dot"></span>
+                                Attaquant
                             </label>
                         </div>
+                        <p id="flied-err" class="message text-red-600 text-center"></p>
                         <div class="tenue-number">
 
                             <label for="name"> Numerro (1 a 99)</label>
@@ -281,6 +286,7 @@
                             <button class="annuler">Annuler</button>
                             <button class="ajouter" id="ajoute-btn" type="submit">Ajouter</button>
                         </div>
+                        <p id="form-err" class="message text-green-600 text-center"></p>
                     </form>
 
 

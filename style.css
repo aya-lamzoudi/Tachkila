@@ -234,20 +234,20 @@ section .info {
     width: 100%;
 }
 
-.poste {
+.postes {
     display: grid;
     gap: 6px;
     grid-template-columns: repeat(2, 170px);
     grid-template-rows: repeat(3, 30px);
 }
 
-.poste span {
+.postes .title {
     font-size: 13px;
     grid-column: 1/-1;
     grid-row: 1/2;
 }
 
-label.position {
+label.poste {
     padding: 2px 15px;
     background-color: #0F172A;
     border: 1px solid blue;

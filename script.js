@@ -1,4 +1,5 @@
 // affichage de popup
+const formmsg = document.querySelector("#form-err");
 
 const ajoute = document.querySelector(".add-btn");
 const hidepopup = document.querySelector("#popnone");
@@ -22,6 +23,8 @@ addform.addEventListener("input", function (event) {
         validatename;
     } else if (event.target.id == "nbr") {
         validatenbr;
+    } else if (event.target.id = "postes") {
+        validatepost;
     }
 
 })
@@ -50,14 +53,35 @@ function validatenbr() {
         error.innerText = "";
     }
 }
+function validatepost() {
+    const poste = addform.querySelector(
+        'input[name="poste"]:checked'
+    );
+    const flied = document.querySelector("#flied-err");
 
+    if (!poste) {
+        flied.innerText = "Choisissez un poste";
+        return;
+    } else {
+        flied.innerText = "";
+    }
+
+}
+
+
+let players = [];
 addform.addEventListener("submit", function (event) {
     event.preventDefault();
 
     validatename();
     validatenbr();
-    
-    let  errors = document.querySelectorAll(".message"); 
+    validatepost()
+    //get the value of input radio
+    let value = document.querySelector(
+        'input[name="poste"]:checked'
+    )?.value;
+
+    let errors = document.querySelectorAll(".message");
     let haserror = false;
     errors.forEach(error => {
         if (error.innerText !== "") {
@@ -65,13 +89,51 @@ addform.addEventListener("submit", function (event) {
         }
     });
     if (!haserror) {
-        msgform.innerText = "the player is added";
-        // document.querySelector("#email").value = "";
-        // document.querySelector("#telephone").value = "";
-        // document.querySelector("#motdepasse").value = "";
+        let player = {
+            nom: document.querySelector("#name").value,
+            post: value,
+            numero: document.querySelector("#nbr").value
+        }
+        players.push(player);
+        console.log(player);
+        console.log(players);
+
+        let newplayer = document.querySelector("#playerlist").cloneNode(true);
+        newplayer.querySelector("#playername").innerText = player.nom;
+        newplayer.querySelector(".player-position").innerText = player.post;
+        //add color
+
+        if (player.post == "Defenseur") {
+            newplayer.querySelector(".player-card").classList.toggle("border-[#d75241]");
+            newplayer.querySelector(".player-card").classList.toggle("border-orange-400");
+            newplayer.querySelector(".player-number").classList.toggle("border-[#d75241]");
+            newplayer.querySelector(".player-number").classList.toggle("border-orange-400");
+            newplayer.querySelector(".player-position").classList.toggle("text-[#d75241]");
+            newplayer.querySelector(".player-position").classList.toggle("text-orange-400");
+        } else if (player.post == "Milieu") {
+            newplayer.querySelector(".player-card").classList.toggle("border-[#20d244]");
+            newplayer.querySelector(".player-card").classList.toggle("border-orange-400");
+            newplayer.querySelector(".player-number").classList.toggle("border-[#20d244]");
+            newplayer.querySelector(".player-number").classList.toggle("border-orange-400");
+            newplayer.querySelector(".player-position").classList.toggle("text-[#20d244]");
+            newplayer.querySelector(".player-position").classList.toggle("text-orange-400");
+        } else if (player.post == "Attaquant") {
+            newplayer.querySelector(".player-card").classList.toggle("border-[#3AC8EF]");
+            newplayer.querySelector(".player-card").classList.toggle("border-orange-400");
+            newplayer.querySelector(".player-number").classList.toggle("border-[#3AC8EF]");
+            newplayer.querySelector(".player-number").classList.toggle("border-orange-400");
+            newplayer.querySelector(".player-position").classList.toggle("text-[#3AC8EF]");
+            newplayer.querySelector(".player-position").classList.toggle("text-orange-400");
+        }
+        /////
+        newplayer.querySelector(".player-number").innerText = player.numero;
+        console.log(newplayer);
+        document.querySelector(".sidecontainer").appendChild(newplayer);
+
+
     }
+
 })
 
 
-let players = [];
 
