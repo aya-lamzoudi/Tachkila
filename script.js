@@ -136,4 +136,11 @@ addform.addEventListener("submit", function (event) {
 })
 
 
+//button de modification
 
+document.querySelector("#modpopup").addEventListener("click", toggleUpdatePopup);
+document.querySelector("#updatenon").addEventListener("click", toggleUpdatePopup);
+document.querySelector("#updateannuler").addEventListener("click", toggleUpdatePopup);
+function toggleUpdatePopup() {
+    document.querySelector("#update").classList.toggle("hidden");
+}
