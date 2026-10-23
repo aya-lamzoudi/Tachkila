@@ -9,7 +9,7 @@ hidepopup.addEventListener("click", togglepopup);
 annuler.addEventListener("click", togglepopup)
 
 function togglepopup() {
-    document.querySelector("#hide").classList.toggle("popupcantainer");
+    document.querySelector("#hide").classList.toggle("hidden");
 }
 
 
@@ -68,15 +68,15 @@ function validatepost() {
 
 }
 
-
 let players = [];
+
 addform.addEventListener("submit", function (event) {
     event.preventDefault();
 
     validatename();
     validatenbr();
     validatepost()
-    //get the value of input radio
+    //get the value of input radio & stock it
     let value = document.querySelector(
         'input[name="poste"]:checked'
     )?.value;
@@ -136,4 +136,11 @@ addform.addEventListener("submit", function (event) {
 })
 
 
+//button de modification
 
+document.querySelector("#modpopup").addEventListener("click", toggleUpdatePopup);
+document.querySelector("#updatenon").addEventListener("click", toggleUpdatePopup);
+document.querySelector("#updateannuler").addEventListener("click", toggleUpdatePopup);
+function toggleUpdatePopup() {
+    document.querySelector("#update").classList.toggle("hidden");
+}
