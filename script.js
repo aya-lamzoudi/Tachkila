@@ -7,9 +7,10 @@ const hidepopup = document.querySelector("#popnone");
 const annuler = document.querySelector(".annuler")
 ajoute.addEventListener("click", togglepopup);
 hidepopup.addEventListener("click", togglepopup);
-annuler.addEventListener("click", togglepopup)
+annuler.addEventListener("click", togglepopup);
 
 function togglepopup() {
+    console.log("test")
     document.querySelector("#hide").classList.toggle("hidden");
 }
 
@@ -35,7 +36,7 @@ function validatename() {
     let error = document.querySelector("#name-err");
 
     if (name === "") {
-        error.innerText = "this champt should not be empty";
+        error.innerText = "this flied should not be empty";
     } else if (!/^[a-zA-Z\s]+$/.test(name)) {
         error.innerText = "this flied should containe just a letters";
     } else {
@@ -69,7 +70,70 @@ function validatepost() {
 
 }
 
+//tableau pour stocker players
 let players = [];
+
+
+//button de modification
+
+document.querySelector("#modpopup").addEventListener("click", toggleUpdatePopup);
+document.querySelector("#updatenon").addEventListener("click", toggleUpdatePopup);
+document.querySelector("#updateannuler").addEventListener("click", toggleUpdatePopup);
+function toggleUpdatePopup() {
+    document.querySelector("#update").classList.toggle("hidden");
+}
+
+// event lisner
+
+function addplayer(player) {
+    let newplayer = document.querySelector("#playerlist").cloneNode(true);
+    newplayer.querySelector("#playername").innerText = player.nom;
+    newplayer.querySelector(".player-position").innerText = player.post;
+    //add color
+
+    if (player.post == "Attaquant") {
+        newplayer.querySelector(".player-card").classList.toggle("border-[#d75241]");
+        newplayer.querySelector(".player-card").classList.toggle("border-orange-400");
+        newplayer.querySelector(".player-number").classList.toggle("border-[#d75241]");
+        newplayer.querySelector(".player-number").classList.toggle("border-orange-400");
+        newplayer.querySelector(".player-position").classList.toggle("text-[#d75241]");
+        newplayer.querySelector(".player-position").classList.toggle("text-orange-400");
+    } else if (player.post == "Milieu") {
+        newplayer.querySelector(".player-card").classList.toggle("border-[#20d244]",);
+        newplayer.querySelector(".player-card").classList.toggle("border-orange-400");
+        newplayer.querySelector(".player-number").classList.toggle("border-[#20d244]");
+        newplayer.querySelector(".player-number").classList.toggle("border-orange-400");
+        newplayer.querySelector(".player-position").classList.toggle("text-[#20d244]");
+        newplayer.querySelector(".player-position").classList.toggle("text-orange-400");
+    } else if (player.post == "Defenseur") {
+        newplayer.querySelector(".player-card").classList.toggle("border-[#3AC8EF]");
+        newplayer.querySelector(".player-card").classList.toggle("border-orange-400");
+        newplayer.querySelector(".player-number").classList.toggle("border-[#3AC8EF]");
+        newplayer.querySelector(".player-number").classList.toggle("border-orange-400");
+        newplayer.querySelector(".player-position").classList.toggle("text-[#3AC8EF]");
+        newplayer.querySelector(".player-position").classList.toggle("text-orange-400");
+    }
+    /////
+    newplayer.querySelector(".player-number").innerText = player.numero;
+    newplayer.classList.toggle("hidden");
+    document.querySelector(".sidecontainer").appendChild(newplayer);
+    document.querySelector("#name").value = "";
+    document.querySelector("#nbr").value = "";
+    let mod = document.querySelectorAll("#modpopup");
+    let no = document.querySelectorAll("#updatenon");
+    let ann = document.querySelectorAll("#updateannuler");
+    mod.forEach(m => {
+        m.addEventListener("click", toggleUpdatePopup);
+    });
+    no.forEach(n => {
+        n.addEventListener("click", toggleUpdatePopup);
+    });
+    ann.forEach(a => {
+        a.addEventListener("click", toggleUpdatePopup);
+    });
+
+
+}
 
 addform.addEventListener("submit", function (event) {
     event.preventDefault();
@@ -91,58 +155,21 @@ addform.addEventListener("submit", function (event) {
     });
     if (!haserror) {
         let player = {
+            // id: players.length++,
             nom: document.querySelector("#name").value,
             post: value,
-            numero: document.querySelector("#nbr").value
+            numero: document.querySelector("#nbr").value,
+            // position: function de slect;
+
         }
         players.push(player);
-        console.log(player);
-        console.log(players);
 
-        let newplayer = document.querySelector("#playerlist").cloneNode(true);
-        newplayer.querySelector("#playername").innerText = player.nom;
-        newplayer.querySelector(".player-position").innerText = player.post;
-        //add color
-
-        if (player.post == "Defenseur") {
-            newplayer.querySelector(".player-card").classList.toggle("border-[#d75241]");
-            newplayer.querySelector(".player-card").classList.toggle("border-orange-400");
-            newplayer.querySelector(".player-number").classList.toggle("border-[#d75241]");
-            newplayer.querySelector(".player-number").classList.toggle("border-orange-400");
-            newplayer.querySelector(".player-position").classList.toggle("text-[#d75241]");
-            newplayer.querySelector(".player-position").classList.toggle("text-orange-400");
-        } else if (player.post == "Milieu") {
-            newplayer.querySelector(".player-card").classList.toggle("border-[#20d244]");
-            newplayer.querySelector(".player-card").classList.toggle("border-orange-400");
-            newplayer.querySelector(".player-number").classList.toggle("border-[#20d244]");
-            newplayer.querySelector(".player-number").classList.toggle("border-orange-400");
-            newplayer.querySelector(".player-position").classList.toggle("text-[#20d244]");
-            newplayer.querySelector(".player-position").classList.toggle("text-orange-400");
-        } else if (player.post == "Attaquant") {
-            newplayer.querySelector(".player-card").classList.toggle("border-[#3AC8EF]");
-            newplayer.querySelector(".player-card").classList.toggle("border-orange-400");
-            newplayer.querySelector(".player-number").classList.toggle("border-[#3AC8EF]");
-            newplayer.querySelector(".player-number").classList.toggle("border-orange-400");
-            newplayer.querySelector(".player-position").classList.toggle("text-[#3AC8EF]");
-            newplayer.querySelector(".player-position").classList.toggle("text-orange-400");
-        }
-        /////
-        newplayer.querySelector(".player-number").innerText = player.numero;
-        console.log(newplayer);
-        document.querySelector(".sidecontainer").appendChild(newplayer);
-
-
+        addplayer(player);
+        togglepopup();
     }
 
 })
 
+function removeplayer() {
 
-//button de modification
-
-document.querySelector("#modpopup").addEventListener("click", toggleUpdatePopup);
-document.querySelector("#updatenon").addEventListener("click", toggleUpdatePopup);
-document.querySelector("#updateannuler").addEventListener("click", toggleUpdatePopup);
-function toggleUpdatePopup() {
-    document.querySelector("#update").classList.toggle("hidden");
 }
-

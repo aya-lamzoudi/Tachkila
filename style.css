@@ -185,12 +185,9 @@ section .info {
 }
 
 /* ###################################################### */
-/* .popupcantainer {
-    display: none;  
-   
-} */
+
 .popup {
- margin: 0 auto;
+    margin: 0 auto;
 }
 
 /* .popup {
@@ -215,7 +212,7 @@ section .info {
     display: flex;
     justify-content: space-between;
     gap: 30px;
-   
+
 }
 
 .nom {

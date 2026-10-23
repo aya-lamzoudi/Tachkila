@@ -52,7 +52,7 @@
             <!-- start aside section -->
             <aside class="sidebar ">
                 <div class="sidecontainer bg-[#1E293B] w-[300px] h-full px-2 border-r border-solid border-gray-500">
-                    <button
+                    <button type="button"
                         class="add-btn bg-[#1eba5f] text-gray-50 w-[280px] h-1/15 rounded-[10px] mt-[6px] mb-[10px] font-bold ">+
                         Ajouter un
                         joueur</button>
@@ -64,7 +64,7 @@
                         Cliquez sur un joueur placé pour voir sa case sur le
                         terrain. 🖊️ pour modifier, 🗑 pour supprimer.
                     </p>
-                    <div id="playerlist">
+                    <div id="playerlist" class="hidden">
                         <div
                             class="player-card px-1 text-gray-50  h-[100px] mt-[10px] mb-[10px] border rounded-[10px] border-l-[4px] border-solid border-orange-400">
                             <div class="player-info flex justify-between p-[6px]">
@@ -77,10 +77,11 @@
                                         <div class="player-position text-orange-400">Gardien</div>
                                     </div>
                                 </div>
-
                                 <div class="actions">
-                                    <button class="edit-btn pr-[4px]" id="modpopup"><i class="fa-solid fa-pen"></i></button>
-                                    <button class="delete-btn pr-[2px]" id="supp"><i class="fa-solid fa-trash-can"></i></button>
+                                    <button class="edit-btn pr-[4px]" id="modpopup"><i
+                                            class="fa-solid fa-pen"></i></button>
+                                    <button class="delete-btn pr-[2px]" id="supp"><i
+                                            class="fa-solid fa-trash-can"></i></button>
                                 </div>
                             </div>
                             <select
@@ -102,12 +103,8 @@
                         </div>
                     </div>
                 </div>
-
-
             </aside>
             <!-- end aside section -->
-
-
             <!-- terrain -->
 
             <section class="">
@@ -245,7 +242,7 @@
                 class="popupcantainer flex justify-center items-center backdrop-blur-sm w-full h-full absolute top-0 text-white hidden">
                 <div
                     class="popup flex flex-col items-center justify-between p-5 bg-[#19253e] border-1 border-[rgb(137, 136, 134)  ] rounded-lg  w-[30%] h-[80%]">
-                    <div class="headerpopup ">
+                    <div class="headerpopup">
                         <h2>Ajouter un joueur</h2>
                         <button id="popnone"><i class="fa-solid fa-x text-white"></i></button>
                     </div>
@@ -258,7 +255,7 @@
                         <div class="postes" id="poste">
                             <label class="title"> poste</label>
                             <label class="poste gardien">
-                                <input type="radio" name="poste" value="Gardien" required>
+                                <input type="radio" name="poste" value="Gardien">
                                 <span class="dot"></span>
                                 Gardien
                             </label>
@@ -283,7 +280,6 @@
                         </div>
                         <p id="flied-err" class="message text-red-600 text-center"></p>
                         <div class="tenue-number">
-
                             <label for="name"> Numerro (1 a 99)</label>
                             <input type="number" name="number" id="nbr" placeholder=" EX: 10" required>
                             <p id="nbr-err" class="message text-red-600 text-center"></p>
