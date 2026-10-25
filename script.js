@@ -15,6 +15,277 @@ const editform = document.querySelector("#updateplayer");
 let edit = document.querySelectorAll(".edit-btn");
 let remove = document.querySelectorAll(".delete-btn");
 let oldnumber;
+const selects = document.querySelectorAll(".player-position-select");
+
+
+selects.forEach(select => {
+    select.addEventListener("change", function () {
+        let value = select.value;
+        console.log(value);
+        let playerCard = select.closest(".player-card");
+        let poste = playerCard.querySelector(".player-poste").innerText;
+        console.log(poste)
+        //garien
+
+        if (value == "GB" && poste == "Gardien") {
+            const position = document.querySelector(".GB");
+            let exit = false
+            let array = document.querySelectorAll(".number")
+            array.forEach(position => {
+                if (position.innerText == playerCard.querySelector(".player-number").innerText) {
+                    exit = true;
+                }
+            });
+            if (position.querySelector(".player-name-position").innerText == "libre" && !exit) {
+                console.log("i'm free");
+                position.querySelector(".player-name-position").innerText = playerCard.querySelector(".player-name").innerText;
+                position.querySelector(".number").innerText = playerCard.querySelector(".player-number").innerText;
+                position.querySelector(".number").classList.remove("hidden");
+            } else {
+                console.log("this position is not availble");
+            }
+
+        } else if (value != "GB" && poste == "Gardien") {
+            console.log("impassible");
+        }
+
+        // defensuer 
+        //1
+        if (value == "DG" && poste == "Defenseur") {
+            const position = document.querySelector(".DG");
+            let exit = false
+            let array = document.querySelectorAll(".number")
+            array.forEach(position => {
+                if (position.innerText == playerCard.querySelector(".player-number").innerText) {
+                    exit = true;
+                }
+            });
+            if (position.querySelector(".player-name-position").innerText == "libre" && !exit) {
+
+                console.log("i'm free 2");
+                position.querySelector(".player-name-position").innerText = playerCard.querySelector(".player-name").innerText;
+                position.querySelector(".number").innerText = playerCard.querySelector(".player-number").innerText;
+                position.querySelector(".number").classList.remove("hidden");
+            }
+
+        } else if (value != "DG" && poste == "Defenseur") {
+            console.log("impassible 2");
+        }
+        //2
+        if (value == "DC1" && poste == "Defenseur") {
+            const position = document.querySelector(".DC-1");
+            let exit = false
+            let array = document.querySelectorAll(".number")
+            array.forEach(position => {
+                if (position.innerText == playerCard.querySelector(".player-number").innerText) {
+                    exit = true;
+                }
+            });
+            if (position.querySelector(".player-name-position").innerText == "libre" && !exit) {
+                console.log("i'm free 2");
+                position.querySelector(".player-name-position").innerText = playerCard.querySelector(".player-name").innerText;
+                position.querySelector(".number").innerText = playerCard.querySelector(".player-number").innerText;
+                position.querySelector(".number").classList.remove("hidden");
+            }
+
+        } else if (value != "DC1" && poste == "Defenseur") {
+            console.log("impassible 3");
+        }
+        //3
+
+        if (value == "DC2" && poste == "Defenseur") {
+            const position = document.querySelector(".DC-2");
+            let exit = false
+            let array = document.querySelectorAll(".number")
+            array.forEach(position => {
+                if (position.innerText == playerCard.querySelector(".player-number").innerText) {
+                    exit = true;
+                }
+            });
+            if (position.querySelector(".player-name-position").innerText == "libre" && !exit) {
+                console.log("i'm free 2");
+                position.querySelector(".player-name-position").innerText = playerCard.querySelector(".player-name").innerText;
+                position.querySelector(".number").innerText = playerCard.querySelector(".player-number").innerText;
+                position.querySelector(".number").classList.remove("hidden");
+            }
+
+        } else if (value != "DC2" && poste == "Defenseur") {
+            console.log("impassible 4");
+        }
+
+        //4
+        if (value == "DD" && poste == "Defenseur") {
+            const position = document.querySelector(".DD");
+            let exit = false
+            let array = document.querySelectorAll(".number")
+            array.forEach(position => {
+                if (position.innerText == playerCard.querySelector(".player-number").innerText) {
+                    exit = true;
+                }
+            });
+            if (position.querySelector(".player-name-position").innerText == "libre" && !exit) {
+                console.log("i'm free 2");
+                position.querySelector(".player-name-position").innerText = playerCard.querySelector(".player-name").innerText;
+                position.querySelector(".number").innerText = playerCard.querySelector(".player-number").innerText;
+                position.querySelector(".number").classList.remove("hidden");
+            }
+
+        } else if (value != "DD" && poste == "Defenseur") {
+            console.log("impassible 5");
+        }
+
+        //milieu
+
+        //1
+        if (value == "MG" && poste == "Milieu") {
+            const position = document.querySelector(".MG");
+            let exit = false
+            let array = document.querySelectorAll(".number")
+            array.forEach(position => {
+                if (position.innerText == playerCard.querySelector(".player-number").innerText) {
+                    exit = true;
+                }
+            });
+            if (position.querySelector(".player-name-position").innerText == "libre" && !exit) {
+                console.log("i'm free 2");
+                position.querySelector(".player-name-position").innerText = playerCard.querySelector(".player-name").innerText;
+                position.querySelector(".number").innerText = playerCard.querySelector(".player-number").innerText;
+                position.querySelector(".number").classList.remove("hidden");
+            }
+
+        } else if (value != "MG" && poste == "Milieu") {
+            console.log("impassible 6");
+        }
+        //2
+        if (value == "MC1" && poste == "Milieu") {
+            const position = document.querySelector(".MC-1");
+            let exit = false
+            let array = document.querySelectorAll(".number")
+            array.forEach(position => {
+                if (position.innerText == playerCard.querySelector(".player-number").innerText) {
+                    exit = true;
+                }
+            });
+            if (position.querySelector(".player-name-position").innerText == "libre" && !exit) {
+                console.log("i'm free 2");
+                position.querySelector(".player-name-position").innerText = playerCard.querySelector(".player-name").innerText;
+                position.querySelector(".number").innerText = playerCard.querySelector(".player-number").innerText;
+                position.querySelector(".number").classList.remove("hidden");
+            }
+
+        } else if (value != "MC1" && poste == "Milieu") {
+            console.log("impassible 7");
+        }
+
+        //3
+        if (value == "MC2" && poste == "Milieu") {
+            const position = document.querySelector(".MC-2");
+            let exit = false
+            let array = document.querySelectorAll(".number")
+            array.forEach(position => {
+                if (position.innerText == playerCard.querySelector(".player-number").innerText) {
+                    exit = true;
+                }
+            });
+            if (position.querySelector(".player-name-position").innerText == "libre" && !exit) {
+                console.log("i'm free 8");
+                position.querySelector(".player-name-position").innerText = playerCard.querySelector(".player-name").innerText;
+                position.querySelector(".number").innerText = playerCard.querySelector(".player-number").innerText;
+                position.querySelector(".number").classList.remove("hidden");
+            }
+
+        } else if (value != "MC2" && poste == "Milieu") {
+            console.log("impassible 8");
+        }
+        //4
+        if (value == "MD" && poste == "Milieu") {
+
+            const position = document.querySelector(".MD");
+            let exit = false
+            let array = document.querySelectorAll(".number")
+            array.forEach(position => {
+                if (position.innerText == playerCard.querySelector(".player-number").innerText) {
+                    exit = true;
+                }
+            });
+            if (position.querySelector(".player-name-position").innerText == "libre" && !exit) {
+                console.log("i'm free 10");
+                position.querySelector(".player-name-position").innerText = playerCard.querySelector(".player-name").innerText;
+                position.querySelector(".number").innerText = playerCard.querySelector(".player-number").innerText;
+                position.querySelector(".number").classList.remove("hidden");
+            }
+
+        } else if (value != "MD" && poste == "Milieu") {
+            console.log("impassible 9");
+        }
+
+        //attaqueure
+
+        //1
+        if (value == "BU1" && poste == "Attaquant") {
+            const position = document.querySelector(".BU-1");
+            let exit = false
+            let array = document.querySelectorAll(".number")
+            array.forEach(position => {
+                if (position.innerText == playerCard.querySelector(".player-number").innerText) {
+                    exit = true;
+                }
+            });
+            if (position.querySelector(".player-name-position").innerText == "libre" && !exit) {
+                console.log("i'm free 2");
+                position.querySelector(".player-name-position").innerText = playerCard.querySelector(".player-name").innerText;
+                position.querySelector(".number").innerText = playerCard.querySelector(".player-number").innerText;
+                position.querySelector(".number").classList.remove("hidden");
+            }
+
+        } else if (value != "BU1" && poste == "Attaquant") {
+            console.log("impassible 10");
+        }
+
+        //2
+
+        if (value == "BU2" && poste == "Attaquant") {
+            const position = document.querySelector(".BU-2");
+            let exit = false
+            let array = document.querySelectorAll(".number");
+            array.forEach(position => {
+                if (position.innerText == playerCard.querySelector(".player-number").innerText) {
+                    exit = true;
+                }
+            });
+            if (position.querySelector(".player-name-position").innerText == "libre" && !exit) {
+                console.log("i'm free 2");
+                position.querySelector(".player-name-position").innerText = playerCard.querySelector(".player-name").innerText;
+                position.querySelector(".number").innerText = playerCard.querySelector(".player-number").innerText;
+                position.querySelector(".number").classList.remove("hidden");
+            }
+
+        } else if (value != "BU2" && poste == "Attaquant") {
+            console.log("impassible 13  ");
+        }
+
+        // sur le banc
+        if (value == "bench") {
+            let exit = false
+            let array = document.querySelectorAll(".terrain-position");
+            array.forEach(position => {
+                let number = position.querySelector(".number").innerText
+                if (number == playerCard.querySelector(".player-number").innerText) {
+                    exit = true;
+                }
+                if (exit) {
+                    position.querySelector(".player-name-position").innerText = "libre"
+                    position.querySelector(".number").innerText = ""
+                    position.querySelector(".number").classList.add("hidden");
+                }
+            });
+
+
+        }
+
+    })
+
+});
 
 
 
