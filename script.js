@@ -1,23 +1,62 @@
 let players = JSON.parse(localStorage.getItem("players")) || [];
+
 players.forEach(player => {
     addplayer(player);
+    document.querySelector("#tachkila-nbr").innerText = players.length;
 });
 
 // declaration
 
-
 const addbtn = document.querySelector(".add-btn");
 const popup = document.querySelector(".modal");
 const form = document.querySelector("#addplayer")
+let edit = document.querySelectorAll(".edit-btn");
+let remove = document.querySelectorAll(".delete-btn");
 
-//affiche && close pop-up
 
-document.querySelector(".add-player-btn").addEventListener("click", togglepopup);
+//affiche and close pop-up && editpopup
+
+
+document.querySelector(".side-container").addEventListener("click", function (event) {
+    event.preventDefault();
+    const add = event.target.closest(".add-player-btn");
+    const editBtn = event.target.closest(".edit-btn");
+    const deleteBtn = event.target.closest(".delete-btn");
+
+    if (add) {
+        togglepopup()
+    }
+    if (editBtn) {
+        const playerCard = editBtn.closest(".player-card");
+        let number = playerCard.querySelector(".player-number").innerText;
+        console.log(number);
+        players.forEach(player => {
+            if (player.numero == number) {
+                console.log(player)
+                console.log("hhhh");
+                document.querySelector("#update-name").value = player.nom;
+                document.querySelector("#update-nbr").value = player.numero;
+                document.querySelectorAll('#update input[name="poste"]').forEach(input => {
+                    input.checked = input.value === player.post;
+                });
+                updatepopup();
+            }
+        });
+
+    }
+
+    if (deleteBtn) {
+        console.log("delete player");
+    }
+});
+
 popup.addEventListener("click", function (event) {
     if (event.target.id == "close-btn" || event.target.id == "popup-cancel") {
         togglepopup();
     }
 })
+document.querySelector("#close-popup").addEventListener("click", updatepopup);
+document.querySelector("#update-annuler").addEventListener("click", updatepopup);
 
 //function
 
@@ -25,6 +64,13 @@ popup.addEventListener("click", function (event) {
 function togglepopup() {
     console.log("test");
     document.querySelector("#popup").classList.toggle("hidden");
+}
+
+// -affichage de editpopup
+
+function updatepopup() {
+    console.log("edit test");
+    document.querySelector("#update").classList.toggle("hidden");
 }
 
 //validate functions
@@ -110,24 +156,7 @@ function addplayer(player) {
         radio.checked = false;
     });
 
-    // let modbtn = document.querySelectorAll("#modpopup");
-    // let cancelbtn = document.querySelectorAll("#updatenon");
-    // let annulerbtn = document.querySelectorAll("#updateannuler");
-    // modbtn.forEach(mod => {
-    //     mod.addEventListener("click", toggleUpdatePopup);
-    //     players.forEach(p => {
-    //         if (p.id == player.id) {
-    //             document.querySelector(".test").value = player.nom;
-    //         }
 
-    //     });
-    // });
-    // cancelbtn.forEach(cancel => {
-    //     cancel.addEventListener("click", toggleUpdatePopup);
-    // });
-    // annulerbtn.forEach(annuler => {
-    //     annuler.addEventListener("click", toggleUpdatePopup);
-    // });
 
 }
 
@@ -166,6 +195,7 @@ form.addEventListener("submit", function (event) {
             numero: document.querySelector("#nbr").value,
 
         }
+
         console.log(player)
         players.push(player);
         localStorage.setItem("players", JSON.stringify(players));

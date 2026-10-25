@@ -55,13 +55,14 @@
 
             <aside class="sidebar ">
                 <div class="side-container bg-[#1E293B] w-[300px] h-full px-2 border-r border-solid border-gray-500">
-                    <button type="button"
+                    <button type="button" id="add-player"
                         class="add-player-btn bg-[#1eba5f] text-gray-50 w-[280px] h-1/15 rounded-[10px] mt-[6px] mb-[10px] font-bold ">
                         + Ajouter un joueur
                     </button>
                     <div class=" flex justify-between text-white text-xs">
                         <h3 class="font-bold">Effectif</h3>
-                        <span class="player-count p-[3px] border rounded-[10px] bg-[#0F172A]"> 1 joueur(s)</span>
+                        <span class="player-count p-[3px] border rounded-[10px] bg-[#0F172A]"><span
+                                id="tachkila-nbr">1</span> joueur(s)</span>
                     </div>
                     <p class="text-xs text-mist-400 pt-[10px] pl-[2px] pb-[3px]">
                         Cliquez sur un joueur placé pour voir sa case sur le
@@ -82,7 +83,7 @@
                                     </div>
                                 </div>
                                 <div class="actions">
-                                    <button type="button" class="edit-btn pr-[4px]"><i
+                                    <button type="button" class="edit-btn pr-[4px]" id="test"><i
                                             class="fa-solid fa-pen"></i></button>
                                     <button type="button" class="delete-btn pr-[2px]" aria-label="Modifier le joueur"><i
                                             class="fa-solid fa-trash-can"></i></button>
@@ -373,7 +374,7 @@
                             </h2>
                         </div>
 
-                        <button type="button" id="updatenon" aria-label="Fermer"
+                        <button type="button" id="close-popup" aria-label="Fermer"
                             class="flex h-10 w-10 items-center justify-center rounded-lg bg-slate-800 text-xl text-white hover:bg-slate-700">
                             &times;
                         </button>
@@ -453,7 +454,7 @@
 
                         <!-- Actions -->
                         <div class="flex justify-end gap-3 pt-5">
-                            <button type="button" id="update-annuler"
+                            <button type="reset" id="update-annuler"
                                 class="w-full rounded-xl border border-slate-700 px-5 py-3 font-medium text-slate-300 hover:bg-slate-800 sm:w-auto">
                                 Annuler
                             </button>
@@ -476,56 +477,7 @@
     </main>
 
     <!-- end main section -->
-    <template>
-        <div class="GB flex gap-1 justify-center">
-            <div class="number">
-            </div>
-            <div class="player-details">
-                <div class="position text-orange-400 "></div>
-                <div class="name font-bold text-white"></div>
-            </div>
-        </div>
-    </template>
-    <template>
-        <div id="playerlist">
-            <div
-                class="player-card px-1 text-gray-50  h-[100px] mt-[10px] mb-[10px] border rounded-[10px] border-l-[4px] border-solid ">
-                <div class="player-info flex justify-between p-[6px]">
-                    <div class="player flex gap-4">
-                        <div
-                            class="player-number self-center w-[30px] h-[30px] rounded-[30px] border border-solid  text-center ">
-                            1</div>
-                        <div class="player-details">
-                            <div id="playername" class="player-name font-bold text-white">bono</div>
-                            <div class="player-position ">Gardien</div>
-                        </div>
-                    </div>
-                    <div class="actions">
-                        <button class="edit-btn pr-[4px]" id="modpopup"><i class="fa-solid fa-pen"></i></button>
-                        <button class="delete-btn pr-[2px]" id="supp"><i class="fa-solid fa-trash-can"></i></button>
-                    </div>
-                </div>
-                <select class="select-position w-[96%] m-auto border rounded-[10px] border-mist-700 bg-[#1E293B]"
-                    id="select">
-                    <option value="bench selected ">Sur le banc</option>
-                    <option value="GB ">GB - Gardien</option>
-                    <option value="DG">DG - Défenseur gauche</option>
-                    <option value="DC1">DC - Défenseur central 1</option>
-                    <option value="DC2">DC - Défenseur central 2</option>
-                    <option value="DD">DD - Défenseur droit</option>
-                    <option value="MG">MG - Milieu gauche</option>
-                    <option value="MC1">MC - Milieu central 1</option>
-                    <option value="MC2">MC - Milieu central 2</option>
-                    <option value="MD">MD - Milieu droit</option>
-                    <option value="BU1">BU - Buteur 1</option>
-                    <option value="BU2">BU - Buteur 2</option>
-                </select>
-            </div>
-        </div>
-    </template>
-
 
 </body>
-<!-- <script src="script.js"> </script> -->
 
 </html>
