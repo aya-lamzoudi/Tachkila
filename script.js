@@ -9,9 +9,12 @@ players.forEach(player => {
 
 const addbtn = document.querySelector(".add-btn");
 const popup = document.querySelector(".modal");
-const form = document.querySelector("#addplayer")
+const form = document.querySelector("#addplayer");
+const editform = document.querySelector("#updateplayer");
 let edit = document.querySelectorAll(".edit-btn");
 let remove = document.querySelectorAll(".delete-btn");
+let oldnumber;
+let id = 0;
 
 
 //affiche and close pop-up && editpopup
@@ -36,6 +39,7 @@ document.querySelector(".side-container").addEventListener("click", function (ev
                 console.log("hhhh");
                 document.querySelector("#update-name").value = player.nom;
                 document.querySelector("#update-nbr").value = player.numero;
+                oldnumber = player.numero;
                 document.querySelectorAll('#update input[name="poste"]').forEach(input => {
                     input.checked = input.value === player.post;
                 });
@@ -46,7 +50,13 @@ document.querySelector(".side-container").addEventListener("click", function (ev
     }
 
     if (deleteBtn) {
-        console.log("delete player");
+        const playerCard = deleteBtn.closest(".player-card");
+        let number = playerCard.querySelector(".player-number").innerText;
+        players.forEach(player => {
+            if (player.numero == number) {
+
+            }
+        });
     }
 });
 
@@ -73,7 +83,7 @@ function updatepopup() {
     document.querySelector("#update").classList.toggle("hidden");
 }
 
-//validate functions
+//validate pop up functions
 
 function validatename() {
     let name = document.querySelector("#name").value.trim();
@@ -118,6 +128,37 @@ function validatepost() {
     }
 }
 
+//validate edit pop-up functions
+
+function validateeditname() {
+    let name = document.querySelector("#update-name").value.trim();
+    let error = document.querySelector("#update-name-err");
+
+    if (name === "") {
+        error.innerText = "this flied should not be empty";
+    } else if (!/^[a-zA-Z\s]+$/.test(name)) {
+        error.innerText = "this flied should containe just a letters";
+    } else {
+        error.innerText = "";
+    }
+}
+
+function validateeditnbr() {
+    let nbr = document.querySelector("#update-nbr").value.trim();
+    let error = document.querySelector("#update-nbr-err");
+
+    if (nbr === "") {
+        error.innerText = "This field should not be empty";
+    } else if (!/^[1-9][0-9]?$/.test(nbr)) {
+        error.innerText = "This number is invalid";
+    } else if (players.some(player => player.numero == nbr) && nbr !== oldnumber) {
+        error.innerText = "This number already exists";
+    } else {
+        error.innerText = "";
+    }
+}
+
+
 // add player
 
 function addplayer(player) {
@@ -160,6 +201,73 @@ function addplayer(player) {
 
 }
 
+// edit player
+
+
+function editplayer(player) {
+    let findplayer = document.querySelectorAll(".player-card");
+    findplayer.forEach(found => {
+        let num = found.querySelector(".player-number").innerText;
+        if (num == oldnumber) {
+            found.querySelector(".player-number").innerText = player.numero;
+            found.querySelector(".player-name").innerText = player.nom;
+            found.querySelector(".player-poste").innerText = player.post;
+
+
+            // remove previous coolors
+            const card = found;
+            const number = found.querySelector(".player-number");
+            const poste = found.querySelector(".player-poste");
+            card.classList.remove(
+                "border-[#d75241]",
+                "border-[#20d244]",
+                "border-[#3AC8EF]",
+                "border-orange-400"
+            );
+
+            number.classList.remove(
+                "border-[#d75241]",
+                "border-[#20d244]",
+                "border-[#3AC8EF]",
+                "border-orange-400"
+            );
+
+            poste.classList.remove(
+                "text-[#d75241]",
+                "text-[#20d244]",
+                "text-[#3AC8EF]",
+                "text-orange-400"
+            );
+
+            //add color
+
+            if (player.post == "Attaquant") {
+                found.classList.add("border-[#d75241]");
+                found.querySelector(".player-number").classList.add("border-[#d75241]");
+                found.querySelector(".player-poste").classList.add("text-[#d75241]");
+
+            } else if (player.post == "Milieu") {
+                found.classList.toggle("border-[#20d244]");
+                found.querySelector(".player-number").classList.toggle("border-[#20d244]");
+                found.querySelector(".player-poste").classList.toggle("text-[#20d244]");
+            } else if (player.post == "Defenseur") {
+                found.classList.toggle("border-[#3AC8EF]");
+                found.querySelector(".player-number").classList.toggle("border-[#3AC8EF]");
+                found.querySelector(".player-poste").classList.toggle("text-[#3AC8EF]");
+            } else if (player.post == "Gardien") {
+                found.classList.toggle("border-orange-400");
+                found.querySelector(".player-number").classList.toggle("border-orange-400");
+                found.querySelector(".player-poste").classList.toggle("text-orange-400");
+            }
+            /////
+        }
+    });
+}
+
+//remove player
+
+
+
 
 
 // event lisner submit
@@ -189,13 +297,12 @@ form.addEventListener("submit", function (event) {
     if (!haserror) {
 
         let player = {
-            id: players.length + 1,
+            id: ++id,
             nom: document.querySelector("#name").value,
             post: value,
             numero: document.querySelector("#nbr").value,
 
         }
-
         console.log(player)
         players.push(player);
         localStorage.setItem("players", JSON.stringify(players));
@@ -205,3 +312,44 @@ form.addEventListener("submit", function (event) {
     }
 
 })
+
+
+editform.addEventListener("submit", function (event) {
+
+    event.preventDefault();
+
+    validateeditname();
+    validateeditnbr();
+
+    const value = editform.querySelector('input[name="poste"]:checked')?.value;
+    // check errors
+
+    let errors = document.querySelectorAll(".message");
+    let haserror = false;
+
+
+    errors.forEach(error => {
+        if (error.innerText !== "") {
+            haserror = true;
+        }
+    });
+
+
+    if (!haserror) {
+        players.forEach(player => {
+            if (oldnumber == player.numero) {
+
+                player.nom = document.querySelector("#update-name").value;
+                player.post = value;
+                player.numero = document.querySelector("#update-nbr").value;
+                console.log("here")
+                console.log(player)
+                console.log(players)
+                editplayer(player);
+                localStorage.setItem("players", JSON.stringify(players));
+                updatepopup();
+            }
+        });
+    }
+
+});
