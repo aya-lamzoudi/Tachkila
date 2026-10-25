@@ -13,13 +13,6 @@ button {
     cursor: pointer;
 }
 
-.pitch-instructions {
-    width: 70%;
-    margin: 10px auto 20px;
-    color: white;
-    font-size: 12px;
-    text-align: center;
-}
 
 .football-pitch {
     display: grid;
