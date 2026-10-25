@@ -1,4 +1,5 @@
 let players = JSON.parse(localStorage.getItem("players")) || [];
+let id = Number(localStorage.getItem("id")) || 0;
 
 players.forEach(player => {
     addplayer(player);
@@ -14,7 +15,7 @@ const editform = document.querySelector("#updateplayer");
 let edit = document.querySelectorAll(".edit-btn");
 let remove = document.querySelectorAll(".delete-btn");
 let oldnumber;
-let id = 0;
+
 
 
 //affiche and close pop-up && editpopup
@@ -35,8 +36,6 @@ document.querySelector(".side-container").addEventListener("click", function (ev
         console.log(number);
         players.forEach(player => {
             if (player.numero == number) {
-                console.log(player)
-                console.log("hhhh");
                 document.querySelector("#update-name").value = player.nom;
                 document.querySelector("#update-nbr").value = player.numero;
                 oldnumber = player.numero;
@@ -54,9 +53,11 @@ document.querySelector(".side-container").addEventListener("click", function (ev
         let number = playerCard.querySelector(".player-number").innerText;
         players.forEach(player => {
             if (player.numero == number) {
-
+                let index = player.id - 1;
+                players.splice(index, 1);
             }
         });
+        console.log(players)
     }
 });
 
@@ -303,6 +304,7 @@ form.addEventListener("submit", function (event) {
             numero: document.querySelector("#nbr").value,
 
         }
+        localStorage.setItem("id", id);
         console.log(player)
         players.push(player);
         localStorage.setItem("players", JSON.stringify(players));
