@@ -9,6 +9,7 @@
         integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
     <title>Tachkila</title>
 </head>
 
@@ -17,24 +18,25 @@
     <!-- start header -->
     <header>
         <div
-            class="headercontainer flex justify-between items-center px-5 h-[50px] bg-[#1E293B] border-b border-solid border-gray-500">
-            <div class=" logo flex gap-2">
-                <img src="img/logo.jpg" alt="logo" class="w-[30px] h-[30px] rounded-4xl">
+            class="header-container flex justify-between items-center px-5 h-[50px] bg-[#1E293B] border-b border-solid border-gray-500">
+            <div class=" logo flex gap-2  items-center">
+                <img src="img/logo.jpg" alt="logo" class="w-[30px] h-[30px] rounded-full">
+
                 <p class="text-gray-50 font-bold ">TACHKILA</p>
             </div>
-            <div class="position">
+            <div class="position-legend">
                 <ul class="flex gap-2 ">
                     <li class="text-xs text-orange-400 flex gap-1">
-                        <div class="w-2 h-2 bg-orange-400 rounded-full self-center"></div>GB
+                        <span class="w-2 h-2 bg-orange-400 rounded-full self-center"></span>GB
                     </li>
                     <li class="text-xs text-blue-600 flex gap-1">
-                        <div class="w-2 h-2 bg-blue-600 rounded-full self-center"></div>DEF
+                        <span class="w-2 h-2 bg-blue-600 rounded-full self-center"></span>DEF
                     </li>
                     <li class="text-xs text-[#20d244] flex gap-1">
-                        <div class="w-2 h-2 bg-[#20d244] rounded-full self-center"></div>MIL
+                        <span class="w-2 h-2 bg-[#20d244] rounded-full self-center"></span>MIL
                     </li>
                     <li class="text-xs text-red-600 flex gap-1">
-                        <div class="w-2 h-2 bg-red-600 rounded-full self-center"></div>ATT
+                        <span class="w-2 h-2 bg-red-600 rounded-full self-center"></span>ATT
                     </li>
                 </ul>
             </div>
@@ -48,45 +50,46 @@
     <!-- end header -->
     <!-- start main section -->
     <main>
-        <div class="maincontainer  flex bg-[#0F172A]">
-            <!-- start aside section -->
+        <div class="main-container  flex bg-[#0F172A]">
+            <!-- THR SIDE BAR -->
+
             <aside class="sidebar ">
-                <div class="sidecontainer bg-[#1E293B] w-[300px] h-full px-2 border-r border-solid border-gray-500">
+                <div class="side-container bg-[#1E293B] w-[300px] h-full px-2 border-r border-solid border-gray-500">
                     <button type="button"
-                        class="add-btn bg-[#1eba5f] text-gray-50 w-[280px] h-1/15 rounded-[10px] mt-[6px] mb-[10px] font-bold ">+
-                        Ajouter un
-                        joueur</button>
+                        class="add-player-btn bg-[#1eba5f] text-gray-50 w-[280px] h-1/15 rounded-[10px] mt-[6px] mb-[10px] font-bold ">
+                        + Ajouter un joueur
+                    </button>
                     <div class=" flex justify-between text-white text-xs">
                         <h3 class="font-bold">Effectif</h3>
-                        <span class="p-[3px] border border-taupe-500 rounded-[10px] bg-[#0F172A]"> 1 joueur(s)</span>
+                        <span class="player-count p-[3px] border rounded-[10px] bg-[#0F172A]"> 1 joueur(s)</span>
                     </div>
                     <p class="text-xs text-mist-400 pt-[10px] pl-[2px] pb-[3px]">
                         Cliquez sur un joueur placé pour voir sa case sur le
                         terrain. 🖊️ pour modifier, 🗑 pour supprimer.
                     </p>
-                    <div id="playerlist" class="hidden">
+                    <!-- Player list -->
+                    <div id="playerlist" class="player-list hidden">
                         <div
-                            class="player-card px-1 text-gray-50  h-[100px] mt-[10px] mb-[10px] border rounded-[10px] border-l-[4px] border-solid border-orange-400">
+                            class="player-card px-1 text-gray-50  h-[100px] mt-[10px] mb-[10px] border rounded-[10px] border-l-[4px] border-solid ">
                             <div class="player-info flex justify-between p-[6px]">
-                                <div class="player flex gap-4">
+                                <div class="player-summary flex gap-4">
                                     <div
-                                        class="player-number self-center w-[30px] h-[30px] rounded-[30px] border border-solid border-orange-400 text-center ">
+                                        class="player-number self-center w-[30px] h-[30px] rounded-[30px] border border-solid  text-center ">
                                         1</div>
                                     <div class="player-details">
-                                        <div id="playername" class="player-name font-bold text-white">bono</div>
-                                        <div class="player-position text-orange-400">Gardien</div>
+                                        <div class="player-name font-bold text-white">bono</div>
+                                        <div class="player-poste ">Gardien</div>
                                     </div>
                                 </div>
                                 <div class="actions">
-                                    <button class="edit-btn pr-[4px]" id="modpopup"><i
+                                    <button type="button" class="edit-btn pr-[4px]"><i
                                             class="fa-solid fa-pen"></i></button>
-                                    <button class="delete-btn pr-[2px]" id="supp"><i
+                                    <button type="button" class="delete-btn pr-[2px]" aria-label="Modifier le joueur"><i
                                             class="fa-solid fa-trash-can"></i></button>
                                 </div>
                             </div>
                             <select
-                                class="select-position w-[96%] m-auto border rounded-[10px] border-mist-700 bg-[#1E293B]"
-                                id="select">
+                                class="player-position-select w-[96%] m-auto border rounded-[10px] border-mist-700 bg-[#1E293B]">
                                 <option value="bench selected ">Sur le banc</option>
                                 <option value="GB ">GB - Gardien</option>
                                 <option value="DG">DG - Défenseur gauche</option>
@@ -104,195 +107,253 @@
                     </div>
                 </div>
             </aside>
-            <!-- end aside section -->
-            <!-- terrain -->
 
-            <section class="">
-                <div class="terrain ">
-                    <div class="GB flex gap-1 justify-center">
-                        <div class="number">
-                            1</div>
-                        <div class="player-details">
-                            <div class="position text-orange-400 ">GB</div>
-                            <div class="name font-bold text-white">BONO</div>
+
+            <!-- The terrain -->
+
+            <section class="pitch-section min-w-0 flex-1 overflow-x-auto">
+                <div class="pitch-scroll w-full overflow-x-auto">
+
+                    <div class="football-pitch min-w-[600px] shrink-0">
+                        <!-- player in pitch -->
+                        <div class="GB flex gap-1 justify-center">
+                            <div class="number">
+                                1</div>
+                            <div class="player-details">
+                                <div class="player-position-code text-orange-400 ">GB</div>
+                                <div class="player-name font-bold text-white">BONO</div>
+                            </div>
                         </div>
-                    </div>
-                    <div class="DG">
-                        <p> <span>DG</span><br>libre</p>
-                    </div>
-                    <div class="DC-1">
-                        <p> <span>DC</span><br>libre</p>
-                    </div>
-                    <div class="DC-2">
-                        <p> <span>DC</span><br>libre</p>
-                    </div>
-                    <div class="DD ">
-                        <p> <span>DD</span><br>libre</p>
-                    </div>
-                    <div class="MG">
-                        <p> <span>MG</span><br>libre</p>
-                    </div>
-                    <div class="MC-1">
-                        <p> <span>MC</span><br>libre</p>
-                    </div>
-                    <div class="MC-2">
-                        <p> <span>MC</span><br>libre</p>
-                    </div>
-                    <div class="MD">
-                        <p> <span>MD</span><br>libre</p>
-                    </div>
-                    <div class="BU-1">
-                        <p> <span>BU</span><br>libre</p>
-                    </div>
-                    <div class="BU-2">
-                        <p> <span>BU</span><br>libre</p>
-                    </div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
+                        <div class="DG">
+                            <p> <span>DG</span><br>libre</p>
+                        </div>
+                        <div class="DC-1">
+                            <p> <span>DC</span><br>libre</p>
+                        </div>
+                        <div class="DC-2">
+                            <p> <span>DC</span><br>libre</p>
+                        </div>
+                        <div class="DD ">
+                            <p> <span>DD</span><br>libre</p>
+                        </div>
+                        <div class="MG">
+                            <p> <span>MG</span><br>libre</p>
+                        </div>
+                        <div class="MC-1">
+                            <p> <span>MC</span><br>libre</p>
+                        </div>
+                        <div class="MC-2">
+                            <p> <span>MC</span><br>libre</p>
+                        </div>
+                        <div class="MD">
+                            <p> <span>MD</span><br>libre</p>
+                        </div>
+                        <div class="BU-1">
+                            <p> <span>BU</span><br>libre</p>
+                        </div>
+                        <div class="BU-2">
+                            <p> <span>BU</span><br>libre</p>
+                        </div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
 
+
+                    </div>
 
                 </div>
-                <p class="info"> Gardien à gauche - attague à droite. Choisissez la position de chaque joueur dans la
-                    liste. Joueurs placés</p>
+
+                <p class="pitch-instructions"> Gardien à gauche - attague à droite. Choisissez la position de chaque
+                    joueur dans la liste. Joueurs placés
+                </p>
             </section>
 
 
-            <!-- pop up -->
-            <section id="hide"
-                class="popupcantainer flex justify-center items-center backdrop-blur-sm w-full h-full absolute top-0 text-white hidden">
-                <div
-                    class="popup flex flex-col items-center justify-between p-5 bg-[#19253e] border-1 border-[rgb(137, 136, 134)  ] rounded-lg  w-[30%] h-[80%]">
-                    <div class="headerpopup">
-                        <h2>Ajouter un joueur</h2>
-                        <button id="popnone"><i class="fa-solid fa-x text-white"></i></button>
+            <!-- POP UP -->
+            <section id="popup"
+                class="add-player-modal fixed inset-0 z-2 flex items-center justify-center bg-black/70 p-4 hidden ">
+                <div class="modal w-full max-w-lg rounded-2xl border border-slate-700 bg-slate-900 p-4">
+
+                    <!-- Header -->
+                    <div class="mb-6 flex items-center justify-between gap-4">
+                        <div>
+                            <h2 class="text-2xl font-bold text-white">
+                                Ajouter un joueur
+                            </h2>
+
+                        </div>
+
+                        <button type="button" id="close-btn" aria-label="Fermer"
+                            class="h-10 w-10 items-center justify-center rounded-lg bg-slate-800 text-xl text-white hover:bg-slate-700 ">
+                            &times;
+                        </button>
                     </div>
-                    <form id="addplayer" class="width-[100%]" novalidate>
-                        <div class="nom">
-                            <label for="name"> Nom complet</label>
-                            <input type="text" name="name" id="name" placeholder=" EX: Aya Lamzoudi ">
-                            <p id="name-err" class="message text-red-600 text-center"></p>
-                        </div>
-                        <div class="postes" id="poste">
-                            <label class="title"> poste</label>
-                            <label class="poste gardien">
-                                <input type="radio" name="poste" value="Gardien">
-                                <span class="dot"></span>
-                                Gardien
+
+                    <!-- Form -->
+                    <form id="addplayer" class="space-y-2">
+
+                        <!-- Name -->
+                        <div>
+                            <label for="name" class="mb-1 block text-sm font-medium text-slate-200">
+                                Nom complet
                             </label>
 
-                            <label class="poste defenseur">
-                                <input type="radio" name="poste" value="Defenseur">
-                                <span class="dot"></span>
-                                Défenseur
-                            </label>
+                            <input type="text" id="name" name="name" placeholder="Ex. : Aya lamzoudi"
+                                class="w-full rounded-xl border border-slate-700 bg-[#0F172A] px-4 py-2 text-white placeholder:text-slate-500 focus:border-cyan-400">
 
-                            <label class="poste milieu">
-                                <input type="radio" name="poste" value="Milieu">
-                                <span class="dot"></span>
-                                Milieu
-                            </label>
-
-                            <label class="poste attaquant">
-                                <input type="radio" name="poste" value="Attaquant">
-                                <span class="dot"></span>
-                                Attaquant
-                            </label>
-                        </div>
-                        <p id="flied-err" class="message text-red-600 text-center"></p>
-                        <div class="tenue-number">
-                            <label for="name"> Numerro (1 a 99)</label>
-                            <input type="number" name="number" id="nbr" placeholder=" EX: 10" required>
-                            <p id="nbr-err" class="message text-red-600 text-center"></p>
+                            <p id="name-err" class="message mt-1 text-sm text-red-400"></p>
                         </div>
 
-                        <div class="btn">
-                            <button class="annuler" type="reset">Annuler</button>
-                            <button class="ajouter" id="ajoute-btn" type="submit">Ajouter</button>
+                        <!-- Position -->
+                        <fieldset>
+                            <legend class="mb-2 text-sm font-medium text-slate-200">
+                                Poste
+                            </legend>
+
+                            <div id="poste" class="grid grid-cols-2 gap-2 ">
+
+                                <label class="cursor-pointer">
+                                    <input type="radio" name="poste" value="Gardien" class="peer sr-only">
+                                    <span
+                                        class="flex min-h-12 items-center justify-center rounded-xl border border-slate-700 bg-[#0F172A] px-2 text-center text-sm text-slate-300  peer-checked:border-amber-400 peer-checked:bg-amber-400/10 peer-checked:text-amber-300">
+                                        Gardien
+                                    </span>
+                                </label>
+
+                                <label class="cursor-pointer ">
+                                    <input type="radio" name="poste" value="Defenseur" class="peer sr-only ">
+                                    <span
+                                        class="flex min-h-12 items-center justify-center rounded-xl border border-slate-700 bg-[#0F172A] px-2 text-center text-sm text-slate-300  peer-checked:border-cyan-400 peer-checked:bg-cyan-400/10 peer-checked:text-cyan-300">
+                                        Défenseur
+                                    </span>
+                                </label>
+
+                                <label class="cursor-pointer">
+                                    <input type="radio" name="poste" value="Milieu" class="peer sr-only">
+                                    <span
+                                        class="flex min-h-12 items-center justify-center rounded-xl border border-slate-700 bg-[#0F172A] px-2 text-center text-sm text-slate-300  peer-checked:border-green-400 peer-checked:bg-green-400/10 peer-checked:text-green-300">
+                                        Milieu
+                                    </span>
+                                </label>
+
+                                <label class="cursor-pointer">
+                                    <input type="radio" name="poste" value="Attaquant" class="peer sr-only">
+                                    <span
+                                        class="flex min-h-12 items-center justify-center rounded-xl border border-slate-700 bg-[#0F172A] px-2 text-center text-sm text-slate-300  peer-checked:border-red-400 peer-checked:bg-red-400/10 peer-checked:text-red-300">
+                                        Attaquant
+                                    </span>
+                                </label>
+
+                            </div>
+
+                            <p id="flied-err" class="message mt-2 text-sm text-red-400"></p>
+                        </fieldset>
+
+                        <!-- Number -->
+                        <div>
+                            <label for="nbr" class="mb-1 text-sm font-medium text-slate-200">
+                                Numéro (1 a 99):
+                            </label>
+
+                            <input type="number" id="nbr" name="nbr" placeholder="Ex : 10"
+                                class="w-full rounded-xl border border-slate-700 bg-[#0F172A] px-4 py-2 text-white placeholder:text-slate-500 focus:border-cyan-400">
+
+                            <p id="nbr-err" class="message mt-1 text-sm text-red-400"></p>
                         </div>
-                        <p id="form-err" class="message text-green-600 text-center"></p>
+
+                        <!-- Actions -->
+                        <div class="flex gap-3 pt-5 justify-end">
+                            <button type="reset" id="popup-cancel"
+                                class="w-full rounded-xl border border-slate-700 px-5 py-3 font-medium text-slate-300 hover:bg-slate-800 sm:w-auto">
+                                Annuler
+                            </button>
+
+                            <button type="submit" id="ajoute-btn"
+                                class="add-btn w-full rounded-xl bg-[#20D244] px-6 py-3 font-semibold text-slate-950 transition hover:bg-[#4af66d] sm:w-auto">
+                                Ajouter le joueur
+                            </button>
+                        </div>
+
                     </form>
-
-
                 </div>
             </section>
 
@@ -300,63 +361,114 @@
 
 
             <section id="update"
-                class="updatepopupcaitainer flex justify-center items-center backdrop-blur-sm w-full h-full absolute top-0 text-white hidden">
-                <div
-                    class="updatepopup flex flex-col items-center justify-between p-5 bg-[#19253e] border-1 border-[rgb(137, 136, 134)  ] rounded-lg  w-[30%] h-[80%]">
-                    <div class="headerpopup ">
-                        <h2>Modifier le joueur</h2>
-                        <button id="updatenon"><i class="fa-solid fa-x text-white"></i></button>
+                class="edit-player fixed inset-0 z-2 flex items-center justify-center bg-black/70 p-4 hidden ">
+
+                <div class="edit-modal w-full max-w-lg rounded-2xl border border-slate-700 bg-slate-900 p-4">
+
+                    <!-- Header -->
+                    <div class="mb-6 flex items-center justify-between gap-4">
+                        <div>
+                            <h2 class="text-2xl font-bold text-white">
+                                Modifier le joueur
+                            </h2>
+                        </div>
+
+                        <button type="button" id="updatenon" aria-label="Fermer"
+                            class="flex h-10 w-10 items-center justify-center rounded-lg bg-slate-800 text-xl text-white hover:bg-slate-700">
+                            &times;
+                        </button>
                     </div>
-                    <form id="addplayer" class="width-[100%]" novalidate>
-                        <div class="nom">
-                            <label for="name"> Nom complet</label>
-                            <input type="text" name="name" id="name" placeholder=" EX: Aya Lamzoudi ">
-                            <p id="name-err" class="message text-red-600 text-center"></p>
-                        </div>
-                        <div class="postes" id="poste">
-                            <label class="title"> poste</label>
-                            <label class="poste gardien">
-                                <input type="radio" name="poste" value="Gardien" required>
-                                <span class="dot"></span>
-                                Gardien
+
+                    <!-- Form -->
+                    <form id="updateplayer" class="space-y-2" novalidate>
+
+                        <!-- Name -->
+                        <div>
+                            <label for="update-name" class="mb-2 block text-sm font-medium text-slate-200">
+                                Nom complet
                             </label>
 
-                            <label class="poste defenseur">
-                                <input type="radio" name="poste" value="Defenseur">
-                                <span class="dot"></span>
-                                Défenseur
-                            </label>
+                            <input type="text" name="name" id="update-name" placeholder="Ex. : Aya Lamzoudi"
+                                class="w-full rounded-xl border border-slate-700 bg-slate-800 px-4 py-2 text-white placeholder:text-slate-500 focus:border-cyan-400">
 
-                            <label class="poste milieu">
-                                <input type="radio" name="poste" value="Milieu">
-                                <span class="dot"></span>
-                                Milieu
-                            </label>
-
-                            <label class="poste attaquant">
-                                <input type="radio" name="poste" value="Attaquant">
-                                <span class="dot"></span>
-                                Attaquant
-                            </label>
-                        </div>
-                        <p id="flied-err" class="message text-red-600 text-center"></p>
-                        <div class="tenue-number">
-
-                            <label for="name"> Numerro (1 a 99)</label>
-                            <input type="number" name="number" id="nbr" placeholder=" EX: 10" required>
-                            <p id="nbr-err" class="message text-red-600 text-center"></p>
+                            <p id="update-name-err" class="mt-1 text-sm text-red-400 text-center"></p>
                         </div>
 
-                        <div class="btn">
-                            <button class="annuler" id="updateannuler" type="reset">Annuler</button>
-                            <button class="ajouter" id="ajoute-btn" type="submit">enregistrer</button>
+                        <!-- Position -->
+                        <fieldset>
+                            <legend class="mb-3 text-sm font-medium text-slate-200">
+                                Poste
+                            </legend>
+
+                            <div id="update-poste" class="grid grid-cols-2 gap-2">
+
+                                <label class="cursor-pointer">
+                                    <input type="radio" name="poste" value="Gardien" class="peer sr-only">
+                                    <span
+                                        class="flex min-h-12 items-center justify-center rounded-xl border border-slate-700 bg-slate-800 px-2 text-center text-sm text-slate-300 peer-checked:border-amber-400 peer-checked:bg-amber-400/10 peer-checked:text-amber-300">
+                                        Gardien
+                                    </span>
+                                </label>
+
+                                <label class="cursor-pointer">
+                                    <input type="radio" name="poste" value="Defenseur" class="peer sr-only">
+                                    <span
+                                        class="flex min-h-12 items-center justify-center rounded-xl border border-slate-700 bg-slate-800 px-2 text-center text-sm text-slate-300 peer-checked:border-cyan-400 peer-checked:bg-cyan-400/10 peer-checked:text-cyan-300">
+                                        Défenseur
+                                    </span>
+                                </label>
+
+                                <label class="cursor-pointer">
+                                    <input type="radio" name="poste" value="Milieu" class="peer sr-only">
+                                    <span
+                                        class="flex min-h-12 items-center justify-center rounded-xl border border-slate-700 bg-slate-800 px-2 text-center text-sm text-slate-300 peer-checked:border-green-400 peer-checked:bg-green-400/10 peer-checked:text-green-300">
+                                        Milieu
+                                    </span>
+                                </label>
+
+                                <label class="cursor-pointer">
+                                    <input type="radio" name="poste" value="Attaquant" class="peer sr-only">
+                                    <span
+                                        class="flex min-h-12 items-center justify-center rounded-xl border border-slate-700 bg-slate-800 px-2 text-center text-sm text-slate-300 peer-checked:border-red-400 peer-checked:bg-red-400/10 peer-checked:text-red-300">
+                                        Attaquant
+                                    </span>
+                                </label>
+
+                            </div>
+
+                            <p id="update-poste-err" class="mt-2 text-sm text-red-400"></p>
+                        </fieldset>
+
+                        <!-- Number -->
+                        <div>
+                            <label for="update-nbr" class="mb-2 block text-sm font-medium text-slate-200">
+                                Numéro (1 à 99)
+                            </label>
+
+                            <input type="number" name="number" id="update-nbr" min="1" max="99" placeholder="Ex. : 10"
+                                class="w-full rounded-xl border border-slate-700 bg-slate-800 px-4 py-2 text-white placeholder:text-slate-500 focus:border-cyan-400">
+
+                            <p id="update-nbr-err" class="mt-1 text-sm text-red-400 text-center"></p>
                         </div>
-                        <p id="form-err" class="message text-green-600 text-center"></p>
+
+                        <!-- Actions -->
+                        <div class="flex justify-end gap-3 pt-5">
+                            <button type="button" id="update-annuler"
+                                class="w-full rounded-xl border border-slate-700 px-5 py-3 font-medium text-slate-300 hover:bg-slate-800 sm:w-auto">
+                                Annuler
+                            </button>
+
+                            <button type="submit" id="update-btn"
+                                class="w-full rounded-xl bg-[#20D244] px-6 py-3 font-semibold text-slate-950  hover:bg-[#4af66d] sm:w-auto">
+                                Enregistrer
+                            </button>
+                        </div>
+
                     </form>
-
-
                 </div>
             </section>
+
+
         </div>
 
 
@@ -364,9 +476,56 @@
     </main>
 
     <!-- end main section -->
+    <template>
+        <div class="GB flex gap-1 justify-center">
+            <div class="number">
+            </div>
+            <div class="player-details">
+                <div class="position text-orange-400 "></div>
+                <div class="name font-bold text-white"></div>
+            </div>
+        </div>
+    </template>
+    <template>
+        <div id="playerlist">
+            <div
+                class="player-card px-1 text-gray-50  h-[100px] mt-[10px] mb-[10px] border rounded-[10px] border-l-[4px] border-solid ">
+                <div class="player-info flex justify-between p-[6px]">
+                    <div class="player flex gap-4">
+                        <div
+                            class="player-number self-center w-[30px] h-[30px] rounded-[30px] border border-solid  text-center ">
+                            1</div>
+                        <div class="player-details">
+                            <div id="playername" class="player-name font-bold text-white">bono</div>
+                            <div class="player-position ">Gardien</div>
+                        </div>
+                    </div>
+                    <div class="actions">
+                        <button class="edit-btn pr-[4px]" id="modpopup"><i class="fa-solid fa-pen"></i></button>
+                        <button class="delete-btn pr-[2px]" id="supp"><i class="fa-solid fa-trash-can"></i></button>
+                    </div>
+                </div>
+                <select class="select-position w-[96%] m-auto border rounded-[10px] border-mist-700 bg-[#1E293B]"
+                    id="select">
+                    <option value="bench selected ">Sur le banc</option>
+                    <option value="GB ">GB - Gardien</option>
+                    <option value="DG">DG - Défenseur gauche</option>
+                    <option value="DC1">DC - Défenseur central 1</option>
+                    <option value="DC2">DC - Défenseur central 2</option>
+                    <option value="DD">DD - Défenseur droit</option>
+                    <option value="MG">MG - Milieu gauche</option>
+                    <option value="MC1">MC - Milieu central 1</option>
+                    <option value="MC2">MC - Milieu central 2</option>
+                    <option value="MD">MD - Milieu droit</option>
+                    <option value="BU1">BU - Buteur 1</option>
+                    <option value="BU2">BU - Buteur 2</option>
+                </select>
+            </div>
+        </div>
+    </template>
 
 
 </body>
-<script src="script.js"> </script>
+<!-- <script src="script.js"> </script> -->
 
 </html>
