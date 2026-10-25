@@ -51,12 +51,16 @@ document.querySelector(".side-container").addEventListener("click", function (ev
     if (deleteBtn) {
         const playerCard = deleteBtn.closest(".player-card");
         let number = playerCard.querySelector(".player-number").innerText;
-        players.forEach(player => {
-            if (player.numero == number) {
-                let index = player.id - 1;
-                players.splice(index, 1);
-            }
-        });
+        let index = players.findIndex(player => player.numero == number);
+        if (index !== -1) {
+            players.splice(index, 1);
+
+            localStorage.setItem("players", JSON.stringify(players));
+
+            playerCard.remove();
+
+            document.querySelector("#tachkila-nbr").innerText = players.length;
+        }
         console.log(players)
     }
 });
