@@ -269,8 +269,6 @@ function editplayer(player) {
     });
 }
 
-//remove player
-
 
 
 
