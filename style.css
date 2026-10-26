@@ -65,7 +65,7 @@ button {
     font-size: 12px;
 }
 
-.DC-1 {
+.DC1 {
     grid-column: 3 / 5;
     grid-row: 4 / 5;
     border: 2px dashed #3AC8EF;
@@ -74,7 +74,7 @@ button {
     font-size: 12px;
 }
 
-.DC-2 {
+.DC2 {
     grid-column: 3 / 5;
     grid-row: 6 / 7;
     border: 2px dashed #3AC8EF;
@@ -93,8 +93,8 @@ button {
 }
 
 .DG span,
-.DC-1 span,
-.DC-2 span,
+.DC1 span,
+.DC2 span,
 .DD span {
     font-size: 13px;
     font-weight: bold;
@@ -112,7 +112,7 @@ button {
     font-size: 12px;
 }
 
-.MC-1 {
+.MC1 {
     grid-column: 7 / 9;
     grid-row: 4 / 5;
     border: 2px dashed #20D244;
@@ -121,7 +121,7 @@ button {
     font-size: 12px;
 }
 
-.MC-2 {
+.MC2 {
     grid-column: 7 / 9;
     grid-row: 6 / 7;
     border: 2px dashed #20D244;
@@ -140,8 +140,8 @@ button {
 }
 
 .MG span,
-.MC-1 span,
-.MC-2 span,
+.MC1 span,
+.MC2 span,
 .MD span {
     font-size: 13px;
     font-weight: bold;
@@ -150,7 +150,7 @@ button {
 
 /* ########################## */
 
-.BU-1 {
+.BU1 {
     grid-column: 11 / 13;
     grid-row: 3 / 4;
     border: 2px dashed #D75241;
@@ -159,7 +159,7 @@ button {
     font-size: 12px;
 }
 
-.BU-2 {
+.BU2 {
     grid-column: 11 / 13;
     grid-row: 7 / 8;
     border: 2px dashed #D75241;
@@ -168,8 +168,8 @@ button {
     font-size: 12px;
 }
 
-.BU-1 span,
-.BU-2 span {
+.BU1 span,
+.BU2 span {
     font-size: 13px;
     font-weight: bold;
     color: #D75241;
