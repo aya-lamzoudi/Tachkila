@@ -3,8 +3,11 @@ let id = Number(localStorage.getItem("id")) || 0;
 
 players.forEach(player => {
     addplayer(player);
+    pitch(players)
     document.querySelector("#tachkila-nbr").innerText = players.length;
+
 });
+
 
 // declaration
 
@@ -281,6 +284,22 @@ function showError(message) {
     }, 4000);
 }
 
+// afficher pitch from local storage
+
+function pitch(players) {
+    players.forEach(player => {
+
+        if (player.position != "bench") {
+            let path = document.querySelector(`.${player.position}`);
+            if (path) {
+                path.querySelector(".player-name-position").innerText = player.nom
+                path.querySelector(".number").innerText = player.numero;
+                path.querySelector(".number").classList.remove("hidden");
+            }
+
+        }
+    });
+}
 
 
 // event lisner submit
@@ -316,7 +335,7 @@ form.addEventListener("submit", function (event) {
             nom: document.querySelector("#name").value,
             post: value,
             numero: document.querySelector("#nbr").value,
-
+            position: "bench",
         }
 
         localStorage.setItem("id", id);
@@ -483,18 +502,7 @@ selects.forEach(select => {
 
 })
 
-console.log(players);
-
-
-function pitch(players) {
-    player.forEach(player => {
-        let path = document.querySelector(`.${value}`);
-        path.querySelector(".player-name-position").innerText = playerCard.querySelector(".player-name").innerText;
-        path.querySelector(".number").innerText = playerCard.querySelector(".player-number").innerText;
-        path.querySelector(".number").classList.remove("hidden");
-
-    });
-}
+console.log(players)
 
 
 
