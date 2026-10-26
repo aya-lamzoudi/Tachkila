@@ -62,6 +62,7 @@ document.querySelector(".side-container").addEventListener("click", function (ev
             playerCard.remove();
 
             document.querySelector("#tachkila-nbr").innerText = players.length;
+            showsuccess("the player is the player is successfully removed");
         }
         console.log(players)
     }
@@ -283,7 +284,17 @@ function showError(message) {
         error.classList.add("hidden");
     }, 4000);
 }
+// seccess message
+function showsuccess(message) {
+    const error = document.querySelector("#success-msg");
+    console.log("hello")
+    error.innerText = message;
+    error.classList.remove("hidden");
 
+    setTimeout(() => {
+        error.classList.add("hidden");
+    }, 4000);
+}
 // afficher pitch from local storage
 
 function pitch(players) {
@@ -345,6 +356,7 @@ form.addEventListener("submit", function (event) {
         console.log(players);
         addplayer(player);
         togglepopup();
+        showsuccess("the player is added with sucsses");
     }
 
 })
@@ -384,6 +396,7 @@ editform.addEventListener("submit", function (event) {
                 editplayer(player);
                 localStorage.setItem("players", JSON.stringify(players));
                 updatepopup();
+                showsuccess("the player is updated with success");
             }
         });
     }
@@ -392,8 +405,6 @@ editform.addEventListener("submit", function (event) {
 
 
 // add player to the pitch
-
-
 
 const check = [
     { value: "GB", poste: "Gardien" },
@@ -423,8 +434,6 @@ selects.forEach(select => {
         let exist = false;
         let checking = document.querySelectorAll(".terrain-position");
         let path = document.querySelector(`.${value}`);
-        // let checkingnbr = document.querySelectorAll(".number");
-        // let checkingname = document.querySelectorAll(".player-name-position");
 
         for (let j = 0; j < check.length; j++) {
 
@@ -446,10 +455,6 @@ selects.forEach(select => {
                 console.log(checkingnbr);
                 console.log("3aaat9ooniii")
                 if (checkingnbr == num) {
-
-                    console.log("3aaat9ooniii")
-                    console.log(checkingnbr);
-
                     found = true;
                     break;
                 }
@@ -464,8 +469,9 @@ selects.forEach(select => {
                         path.querySelector(".player-name-position").innerText = playerCard.querySelector(".player-name").innerText;
                         path.querySelector(".number").innerText = playerCard.querySelector(".player-number").innerText;
                         path.querySelector(".number").classList.remove("hidden");
+                        showsuccess("the player is being placed in the pitch with seccess");
                     }
-                    console.log(players);
+
                 });
             } else {
 
