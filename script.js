@@ -396,7 +396,7 @@ selects.forEach(select => {
                 position.querySelector(".number").classList.remove("hidden");
 
             } else {
-                showError("this position is already tooking")
+                showError("this position is already taken")
             }
 
         } else if (value != "GB" && poste == "Gardien" && value != "bench") {
