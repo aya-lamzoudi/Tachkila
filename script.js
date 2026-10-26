@@ -17,9 +17,6 @@ let remove = document.querySelectorAll(".delete-btn");
 let oldnumber;
 const selects = document.querySelectorAll(".player-position-select");
 
-
-
-
 //affiche and close pop-up && editpopup
 
 
