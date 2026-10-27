@@ -18,14 +18,14 @@
     <!-- start header -->
     <header>
         <div
-            class="header-container flex justify-between items-center px-5 h-[50px] bg-[#1E293B] border-b border-solid border-gray-500">
+            class="header-container flex justify-between items-center px-5 max-[767px]:p-1 h-[50px] bg-[#1E293B] border-b border-solid border-gray-500">
             <div class=" logo flex gap-2  items-center">
                 <img src="img/logo.jpg" alt="logo" class="w-[30px] h-[30px] rounded-full">
 
                 <p class="text-gray-50 font-bold ">TACHKILA</p>
             </div>
             <div class="position-legend">
-                <ul class="flex gap-2 ">
+                <ul class="flex gap-2 max-[767px]:grid max-[767px]:grid-cols-2 max-[767px]:gap-1 ">
                     <li class="text-xs text-orange-400 flex gap-1">
                         <span class="w-2 h-2 bg-orange-400 rounded-full self-center"></span>GB
                     </li>
@@ -50,28 +50,29 @@
     <!-- end header -->
     <!-- start main section -->
     <main>
-        <div class="main-container  flex bg-[#0F172A]">
+        <div class="main-container flex lg:flex-row bg-[#0F172A] md:flex-col-reverse max-[767px]:flex-col">
             <!-- THR SIDE BAR -->
 
-            <aside class="sidebar ">
-                <div class="side-container bg-[#1E293B] w-[300px] h-full px-2 border-r border-solid border-gray-500">
+            <aside class="sidebar">
+                <div
+                    class="side-container flex flex-col bg-[#1E293B] lg:w-[300px] h-full px-2 border-r border-solid border-gray-500 md:w-full ms:w-full">
                     <button type="button" id="add-player"
-                        class="add-player-btn bg-[#1eba5f] text-gray-50 w-[280px] h-1/15 rounded-[10px] mt-[6px] mb-[10px] font-bold ">
+                        class="add-player-btn bg-[#1eba5f] text-gray-50 lg:w-[280px] lg:h-[50px] rounded-[10px] mt-[6px] mb-[10px] font-bold md:w-[400px]  md:self-center">
                         + Ajouter un joueur
                     </button>
-                    <div class=" flex justify-between text-white text-xs">
+                    <div class=" flex justify-between text-white text-xs md:mx-[40px] ms:mx-[40px]">
                         <h3 class="font-bold">Effectif</h3>
                         <span class="player-count p-[3px] border rounded-[10px] bg-[#0F172A]"><span
                                 id="tachkila-nbr">0</span> joueur(s)</span>
                     </div>
-                    <p class="text-xs text-mist-400 pt-[10px] pl-[2px] pb-[3px]">
+                    <p class="text-xs text-mist-400 pt-[10px] pl-[2px] pb-[3px] md:self-center ms:self-center">
                         Cliquez sur un joueur placé pour voir sa case sur le
                         terrain. 🖊️ pour modifier, 🗑 pour supprimer.
                     </p>
                     <!-- Player list -->
-                    <div id="playerlist" class="player-list hidden">
+                    <div id="playerlist" class="player-list hidden md:w-[85%] md:mx-auto ms:w-[85%] ms:mx-auto">
                         <div
-                            class="player-card px-1 text-gray-50  h-[100px] mt-[10px] mb-[10px] border rounded-[10px] border-l-[4px] border-solid ">
+                            class="player-card px-1 text-gray-50 h-[100px] mt-[10px] mb-[10px] border rounded-[10px] border-l-[4px] border-solid ">
                             <div class="player-info flex justify-between p-[6px]">
                                 <div class="player-summary flex gap-4">
                                     <div
@@ -115,7 +116,7 @@
             <section class="pitch-section min-w-0 flex-1 overflow-x-auto ">
                 <div class="pitch-scroll w-full ">
 
-                    <div class="football-pitch min-w-[600px] shrink-0">
+                    <div class="football-pitch min-w-[650px] shrink-0">
                         <!-- player in pitch -->
                         <div class="GB terrain-position flex gap-1 justify-center">
                             <div class="number hidden">
@@ -129,7 +130,7 @@
                         <div class="DG terrain-position flex gap-1 justify-center">
                             <div
                                 class="number w-[25px] h-[25px] border border-solid border-[#3AC8EF] rounded-full text-center self-center p-[5px] text-[#3AC8EF] hidden">
-                           0 </div>
+                                0 </div>
                             <div class="player-details">
                                 <div class="player-position-code text-[#3AC8EF] font-bold">DG</div>
                                 <div class="player-name-position font-bold text-white">libre</div>
@@ -138,7 +139,7 @@
                         <div class="DC1 terrain-position flex gap-1 justify-center">
                             <div
                                 class="number w-[25px] h-[25px] border border-solid border-[#3AC8EF] rounded-full text-center self-center p-[5px] text-[#3AC8EF] hidden">
-                            0</div>
+                                0</div>
                             <div class="player-details">
                                 <div class="player-position-code text-[#3AC8EF] font-bold">DC</div>
                                 <div class="player-name-position font-bold text-white">libre</div>
@@ -147,7 +148,7 @@
                         <div class="DC2 terrain-position flex gap-1 justify-center">
                             <div
                                 class="number hidden w-[25px] h-[25px] border border-solid border-[#3AC8EF] rounded-full text-center self-center p-[5px] text-[#3AC8EF]">
-                            0</div>
+                                0</div>
                             <div class="player-details">
                                 <div class="player-position-code text-[#3AC8EF] font-bold">DC</div>
                                 <div class="player-name-position font-bold text-white">libre</div>
@@ -156,7 +157,7 @@
                         <div class="DD terrain-position flex gap-1 justify-center">
                             <div
                                 class="number hidden w-[25px] h-[25px] border border-solid border-[#3AC8EF] rounded-full text-center self-center p-[5px] text-[#3AC8EF]">
-                            0</div>
+                                0</div>
                             <div class="player-details">
                                 <div class="player-position-code text-[#3AC8EF] font-bold">DD</div>
                                 <div class="player-name-position font-bold text-white">libre</div>
@@ -165,7 +166,7 @@
                         <div class="MG terrain-position flex gap-1 justify-center">
                             <div
                                 class="number hidden w-[25px] h-[25px] border border-solid border-[#20D244] rounded-full text-center self-center p-[5px] text-[#20D244]">
-                            0</div>
+                                0</div>
                             <div class="player-details">
                                 <div class="player-position-code text-[#20D244] font-bold">MG</div>
                                 <div class="player-name-position font-bold text-white">libre</div>
@@ -183,7 +184,7 @@
                         <div class="MC2 terrain-position flex gap-1 justify-center">
                             <div
                                 class="number hidden w-[25px] h-[25px] border border-solid border-[#20D244] rounded-full text-center self-center p-[5px] text-[#20D244]">
-                            0</div>
+                                0</div>
                             <div class="player-details">
                                 <div class="player-position-code text-[#20D244] font-bold">MC</div>
                                 <div class="player-name-position font-bold text-white">libre</div>
@@ -192,7 +193,7 @@
                         <div class="MD terrain-position flex gap-1 justify-center">
                             <div
                                 class="number hidden w-[25px] h-[25px] border border-solid border-[#20D244] rounded-full text-center self-center p-[5px] text-[#20D244]">
-                            0</div>
+                                0</div>
                             <div class="player-details">
                                 <div class="player-position-code text-[#20D244] font-bold">MD</div>
                                 <div class="player-name-position font-bold text-white">libre</div>
@@ -201,7 +202,7 @@
                         <div class="BU1 terrain-position flex gap-1 justify-center">
                             <div
                                 class="number hidden w-[25px] h-[25px] border border-solid border-[#D75241] rounded-full text-center self-center p-[5px] text-[#D75241]">
-                            0</div>
+                                0</div>
                             <div class="player-details">
                                 <div class="player-position-code text-[#D75241] font-bold">BU</div>
                                 <div class="player-name-position font-bold text-white">libre</div>
@@ -210,7 +211,7 @@
                         <div class="BU2 terrain-position flex gap-1 justify-center">
                             <div
                                 class="number hidden w-[25px] h-[25px] border border-solid border-[#D75241] rounded-full text-center self-center p-[5px] text-[#D75241]">
-                            0</div>
+                                0</div>
                             <div class="player-details">
                                 <div class="player-position-code text-[#D75241] font-bold">BU</div>
                                 <div class="player-name-position font-bold text-white">libre</div>
@@ -308,9 +309,13 @@
                     Gardien à gauche - attague à droite. Choisissez la position de chaque
                     joueur dans la liste. Joueurs placés
                 </p>
-   
-                    <p id="error-msg" class="text-red-500 hidden text-ms text-center absolute w-[430px] h-[45px] bg-[#e6e6b3] text-center bottom-[50%] right-[0] opacity-[0.9]"> </p>
-                    <p id="success-msg" class="text-green-600 hidden text-ms text-center absolute w-[430px] h-[45px] bg-[#e6e6b3] text-center bottom-[50%] right-[0] opacity-[0.9]"> </p>
+
+                <p id="error-msg"
+                    class="text-red-500 hidden text-ms text-center absolute w-[430px] h-[45px] bg-[#e6e6b3] text-center bottom-[50%] right-[0] opacity-[0.9]">
+                </p>
+                <p id="success-msg"
+                    class="text-green-600 hidden text-ms text-center absolute w-[430px] h-[45px] bg-[#e6e6b3] text-center bottom-[50%] right-[0] opacity-[0.9]">
+                </p>
 
 
             </section>

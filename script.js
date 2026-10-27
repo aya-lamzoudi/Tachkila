@@ -470,6 +470,7 @@ selects.forEach(select => {
                         path.querySelector(".number").innerText = playerCard.querySelector(".player-number").innerText;
                         path.querySelector(".number").classList.remove("hidden");
                         showsuccess("the player is being placed in the pitch with seccess");
+                        pitch(player)
                     }
 
                 });
@@ -508,7 +509,6 @@ selects.forEach(select => {
 
 })
 
-console.log(players)
 
 
 
