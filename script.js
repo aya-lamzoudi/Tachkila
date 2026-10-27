@@ -3,7 +3,7 @@ let id = Number(localStorage.getItem("id")) || 0;
 
 players.forEach(player => {
     addplayer(player);
-    pitch(players)
+    pitch(players);
     document.querySelector("#tachkila-nbr").innerText = players.length;
 
 });
@@ -19,7 +19,8 @@ let edit = document.querySelectorAll(".edit-btn");
 let remove = document.querySelectorAll(".delete-btn");
 let oldnumber;
 const selects = document.querySelectorAll(".player-position-select");
-
+const confirmDelete = document.querySelector("#confirmDelete");
+const cancelDelete = document.querySelector("#cancelDelete");
 //affiche and close pop-up && editpopup
 
 
@@ -51,18 +52,31 @@ document.querySelector(".side-container").addEventListener("click", function (ev
     }
 
     if (deleteBtn) {
+        const confirm = document.querySelector("#confirm");
+        confirm.classList.toggle("hidden");
         const playerCard = deleteBtn.closest(".player-card");
         let number = playerCard.querySelector(".player-number").innerText;
         let index = players.findIndex(player => player.numero == number);
         if (index !== -1) {
-            players.splice(index, 1);
+            cancelDelete.addEventListener("click", () => {
+                confirm.classList.toggle("hidden");
+            })
+            confirmDelete.addEventListener("click", () => {
 
-            localStorage.setItem("players", JSON.stringify(players));
+                console.log(players[index])
+                console.log("did you see mee")
+                players[index].position = "bench";
+                console.log(players[index])
+                players.splice(index, 1);
+                localStorage.setItem("players", JSON.stringify(players));
 
-            playerCard.remove();
+                playerCard.remove();
+                pitch(players);
+                document.querySelector("#tachkila-nbr").innerText = players.length;
+                confirm.classList.toggle("hidden");
+                showsuccess("the player is the player is successfully removed");
+            })
 
-            document.querySelector("#tachkila-nbr").innerText = players.length;
-            showsuccess("the player is the player is successfully removed");
         }
         console.log(players)
     }
@@ -174,6 +188,8 @@ function addplayer(player) {
     newplayer.querySelector(".player-number").innerText = player.numero;
     newplayer.querySelector(".player-name").innerText = player.nom;
     newplayer.querySelector(".player-poste").innerText = player.post;
+    newplayer.querySelector("select").value = player.position;
+
     //add color
 
     if (player.post == "Attaquant") {
@@ -391,10 +407,10 @@ editform.addEventListener("submit", function (event) {
                 player.nom = document.querySelector("#update-name").value;
                 player.post = value;
                 player.numero = document.querySelector("#update-nbr").value;
-                console.log(player)
-                console.log(players)
+                player.position = "bench";
                 editplayer(player);
                 localStorage.setItem("players", JSON.stringify(players));
+
                 updatepopup();
                 showsuccess("the player is updated with success");
             }

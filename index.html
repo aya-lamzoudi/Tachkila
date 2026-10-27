@@ -50,7 +50,7 @@
     <!-- end header -->
     <!-- start main section -->
     <main>
-        <div class="main-container flex lg:flex-row bg-[#0F172A] md:flex-col-reverse max-[767px]:flex-col">
+        <div class="main-container flex lg:flex-row bg-[#0F172A] md:flex-col max-[767px]:flex-col">
             <!-- THR SIDE BAR -->
 
             <aside class="sidebar">
@@ -311,10 +311,10 @@
                 </p>
 
                 <p id="error-msg"
-                    class="text-red-500 hidden text-ms text-center absolute w-[430px] h-[45px] bg-[#e6e6b3] text-center bottom-[50%] right-[0] opacity-[0.9]">
+                    class="hidden text-white text-ms text-center absolute w-[60%] h-[45px] bg-red-500 text-center bottom-[25px] right-[10px] rounded-[10px] pt-[10px] ">
                 </p>
                 <p id="success-msg"
-                    class="text-green-600 hidden text-ms text-center absolute w-[430px] h-[45px] bg-[#e6e6b3] text-center bottom-[50%] right-[0] opacity-[0.9]">
+                    class="hidden text-white text-green-600  text-ms text-center absolute w-[60%] h-[45px] bg-[#1eba5f] text-center bottom-[25px] right-[10px] rounded-[10px] pt-[10px]">
                 </p>
 
 
@@ -541,10 +541,38 @@
                 </div>
             </section>
 
+            <!-- message de conformation -->
+            <section id="confirm"
+                class="supp hidden fixed inset-0 z-2 flex items-center justify-center bg-black/70 p-4  ">
+
+                <div
+                    class=" flex flex-col justify-center items-center w-full max-w-lg rounded-2xl border border-slate-700 bg-slate-900 p-4">
+
+                    <!-- Header -->
+                    <div class="mb-6 flex items-center justify-between gap-4">
+                        <div>
+                            <h2 class="text-2xl font-bold text-white">
+                                message de confirmation:
+                            </h2>
+                        </div>
+                    </div>
+
+                    <div id="confirmation" aria-labelledby="confirmText"
+                        class=" w-max flex-col sm:flex-row items-center justify-between gap-4 rounded-2xl border-2 border-[#D75241] bg-[#03151bf2] px-6 py-4 shadow-2xl backdrop-blur-sm">
+                        <p id="confirmText" class="font-semibold text-white"></p>
+                        <div class="flex flex-wrap justify-center gap-3 text-[12px]">
+                            <button id="cancelDelete" type="button"
+                                class="rounded-xl bg-slate-700 px-5 py-2.5 font-semibold transition hover:bg-slate-600">Annuler</button>
+                            <button id="confirmDelete" type="button"
+                                class="rounded-xl bg-[#D75241] px-5 py-2.5 font-bold text-[#071018] transition hover:brightness-110">Supprimer</button>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
 
         </div>
-
-
 
     </main>
 
