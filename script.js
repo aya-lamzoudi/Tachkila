@@ -183,13 +183,54 @@ function validateeditnbr() {
 
 // add player
 
+// function addplayer(player) {
+//     let newplayer = document.querySelector("#playerlist").cloneNode(true);
+//     newplayer.querySelector(".player-number").innerText = player.numero;
+//     newplayer.querySelector(".player-name").innerText = player.nom;
+//     newplayer.querySelector(".player-poste").innerText = player.post;
+//     newplayer.querySelector("select").value = player.position;
+
+//     //add color
+
+//     if (player.post == "Attaquant") {
+//         newplayer.querySelector(".player-card").classList.toggle("border-[#d75241]");
+//         newplayer.querySelector(".player-number").classList.toggle("border-[#d75241]");
+//         newplayer.querySelector(".player-poste").classList.toggle("text-[#d75241]");
+//     } else if (player.post == "Milieu") {
+//         newplayer.querySelector(".player-card").classList.toggle("border-[#20d244]");
+//         newplayer.querySelector(".player-number").classList.toggle("border-[#20d244]");
+//         newplayer.querySelector(".player-poste").classList.toggle("text-[#20d244]");
+//     } else if (player.post == "Defenseur") {
+//         newplayer.querySelector(".player-card").classList.toggle("border-[#3AC8EF]");
+//         newplayer.querySelector(".player-number").classList.toggle("border-[#3AC8EF]");
+//         newplayer.querySelector(".player-poste").classList.toggle("text-[#3AC8EF]");
+//     } else if (player.post == "Gardien") {
+//         newplayer.querySelector(".player-card").classList.toggle("border-orange-400");
+//         newplayer.querySelector(".player-number").classList.toggle("border-orange-400");
+//         newplayer.querySelector(".player-poste").classList.toggle("text-orange-400");
+//     }
+//     /////
+
+//     newplayer.classList.toggle("hidden");
+//     document.querySelector(".side-container").appendChild(newplayer);
+
+//     //reset the values
+//     document.querySelector("#name").value = "";
+//     document.querySelector("#nbr").value = "";
+//     document.querySelectorAll('input[name="poste"]').forEach(radio => {
+//         radio.checked = false;
+//     })
+
+//     document.querySelector("#tachkila-nbr").innerText = players.length;
+
+
+
+// }
 function addplayer(player) {
     let newplayer = document.querySelector("#playerlist").cloneNode(true);
     newplayer.querySelector(".player-number").innerText = player.numero;
     newplayer.querySelector(".player-name").innerText = player.nom;
     newplayer.querySelector(".player-poste").innerText = player.post;
-    newplayer.querySelector("select").value = player.position;
-
     //add color
 
     if (player.post == "Attaquant") {
@@ -222,6 +263,92 @@ function addplayer(player) {
     })
 
     document.querySelector("#tachkila-nbr").innerText = players.length;
+
+    // add event lesener to the select
+
+    newplayer.addEventListener("change", function () {
+
+        let value = newplayer.querySelector("select").value; //get the select value
+
+        let playerCard = newplayer.querySelector(".player-card"); //get the player's div
+
+        let poste = newplayer.querySelector(".player-poste").innerText; //get the player post
+        let num = newplayer.querySelector(".player-number").innerText; //get the player number
+
+        let exist = false;
+        let checking = document.querySelectorAll(".terrain-position");
+        let path = document.querySelector(`.${value}`);
+
+        for (let j = 0; j < check.length; j++) {
+
+            //check if the position can be tooken by the player
+            if (check[j].value == value && poste == check[j].poste) {
+                exist = true;
+                break;
+            }
+
+        }
+        console.log(exist);
+
+        if (exist) {
+            let found = false;
+            for (let i = 0; i < checking.length; i++) {
+                let checkingnbr = checking[i].querySelector(".number").innerText;
+                // let checkingname = checking[i].querySelector(".player-name-position").innerText;
+
+                console.log(checkingnbr);
+                console.log("3aaat9ooniii")
+                if (checkingnbr == num) {
+                    found = true;
+                    break;
+                }
+            }
+            if (!found && path.querySelector(".player-name-position").innerText == "libre") {
+                players.forEach(player => {
+
+                    if (player.numero == num) {
+                        console.log(player)
+                        player.position = value;
+                        localStorage.setItem("players", JSON.stringify(players));
+                        path.querySelector(".player-name-position").innerText = playerCard.querySelector(".player-name").innerText;
+                        path.querySelector(".number").innerText = playerCard.querySelector(".player-number").innerText;
+                        path.querySelector(".number").classList.remove("hidden");
+                        showsuccess("the player is being placed in the pitch with seccess");
+
+
+                    }
+
+                });
+            } else {
+
+                showError("this position is already exist");
+            }
+
+
+        } else {
+            if (value == "bench") {
+                players.forEach(player => {
+
+                    if (player.numero == num) {
+                        console.log(player)
+                        console.log(player.position)
+                        let path = document.querySelector(`.${player.position}`);
+                        console.log(path)
+                        player.position = value;
+                        localStorage.setItem("players", JSON.stringify(players));
+                        path.querySelector(".player-name-position").innerText = "libre"
+                        path.querySelector(".number").innerText = ""
+                        path.querySelector(".number").classList.add("hidden");
+                    }
+
+                });
+            } else {
+                showError("this position can not be accepted")
+            }
+
+        }
+
+    })
 
 
 
@@ -524,8 +651,3 @@ selects.forEach(select => {
 
 
 })
-
-
-
-
-
