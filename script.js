@@ -66,7 +66,26 @@ document.querySelector(".side-container").addEventListener("click", function (ev
                 console.log(players[index])
                 console.log("did you see mee")
                 players[index].position = "bench";
-                console.log(players[index])
+                console.log(players[index]);
+
+                // hahuwa
+                let liste = document.querySelectorAll(".terrain-position");
+                console.log(liste);
+                liste.forEach(find => {
+
+                    if (find.querySelector(".number").innerText == players[index].numero) {
+                        console.log(find);
+                        find.querySelector(".number").innerText = "";
+                        find.querySelector(".number").classList.add("hidden");
+                        find.querySelector(".player-name-position").innerText = "libre";
+
+                    }
+
+                });
+
+                //hahuwa
+
+
                 players.splice(index, 1);
                 localStorage.setItem("players", JSON.stringify(players));
 
@@ -94,7 +113,6 @@ document.querySelector("#update-annuler").addEventListener("click", updatepopup)
 
 // -affichage de popup
 function togglepopup() {
-    console.log("test");
     document.querySelector("#popup").classList.toggle("hidden");
 }
 
